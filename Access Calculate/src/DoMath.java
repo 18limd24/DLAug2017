@@ -10,6 +10,8 @@ public class DoMath {
 		System.out.println(Calculate.average(5, 7));
 		System.out.println(Calculate.average(5,7,9));
 		System.out.println(Calculate.toDegrees(2*3.14149));
+		System.out.println(Calculate.toRadians(360));
+		System.out.println(Calculate.discriminant(1,2,3));
 
 	}
 

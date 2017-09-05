@@ -45,4 +45,24 @@ public class Calculate {
 		double degrees= radians*180/3.14159;
 		return degrees;
 	}
+	/*This method converts an angle measure from degrees
+	 * to radians.
+	 * Accepts a double and returns a double
+	 */
+	public static double toRadians(double degrees) {
+		double radians= degrees * 3.14159/180;
+		return radians;
+	}
+	
+	/*This method will provide coefficients of a quadratic equation
+	 *  in standard form (a,b,c)
+	 *  and returns the value of the discriminant
+	 */
+	public static double discriminant(double a, double b, double c) {
+		double discriminant= b * b - 4 * a * c;
+		return discriminant;
+	}
+	public static String toImproperFrac(int operand1, int operand2, int operand3) {
+		
+	}
 }
