@@ -62,7 +62,45 @@ public class Calculate {
 		double discriminant= b * b - 4 * a * c;
 		return discriminant;
 	}
-	public static String toImproperFrac(int operand1, int operand2, int operand3) {
+	/*This method will convert mixed numbers into an improper fraction
+	 * from three integers to a string
+	 */
+	public static String toImproperFrac(int a, int b, int c) {
+		return a*c+b + "/" + c;
+	}
+	/*Converts improper fraction into a mixed number
+	 * two integers to a string
+	 */
+	public static String toMixedNumber(int a, int b) {
+		return a/b +" " + a%b + "/" + b;
 		
+	}
+	/*Converts (ax + b)(cx + d) into a quadratic equation of ax^2 + bx +c
+	 * The method accepts four integers and returns a string
+	 */
+	public static String foil(int a, int b, int c, int d) {
+		return a*c + "x^2" + "+" + (a*d + b*c) +"x" + b*d;
+	}
+	/*determines whether or not one integer is evenly divisible by another
+	 * accepts two integers and returns a boolean
+	 */
+	public static boolean isDivisibileBy(int a, int b) {
+		if(a%b==0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	/*This method will return the absolute value of the number passed.
+	 * accepts a double and returns a double
+	 */
+	public static double absValue(double a) {
+		if(a>0) {
+			return a;
+		}if(a==0) {
+			return 0;
+		}if(a<0) {
+			return -a;
+		}
 	}
 }
