@@ -97,10 +97,39 @@ public class Calculate {
 	public static double absValue(double a) {
 		if(a>0) {
 			return a;
-		}if(a==0) {
-			return 0;
-		}if(a<0) {
+		}else if(a==0) {
+			return 0.;
+		}else if(a<0) {
 			return -a;
 		}
+	}
+	
+	/*This method returns the larger of the values passed
+	 * accepts 2 double and returns a double
+	 */
+	public static double max(double a, double b) {
+		if(a>b) {
+			return a;
+		}else if(a<b) {
+			return b;
+		}//what if a==b
+	}
+	/*Overload max
+	 * accepts three doubles and returns a double
+	 */
+	public static double max(double a, double b, double c) {
+		if(a>b) {
+			if(a>c) {
+				return a;
+			}
+		}else if(b>a) {
+			if(b>c) {
+				return b;
+			}
+		}else if(c>a) {
+			if(c>b) {
+				return c;
+			}
+		} 
 	}
 }
