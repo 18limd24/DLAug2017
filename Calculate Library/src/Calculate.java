@@ -118,18 +118,13 @@ public class Calculate {
 	 * accepts three doubles and returns a double
 	 */
 	public static double max(double a, double b, double c) {
-		if(a>b) {
-			if(a>c) {
+		if(a>b && a>c) {
 				return a;
-			}
-		}else if(b>a) {
-			if(b>c) {
+		}else if(b>a && b >c) {
 				return b;
 			}
-		}else if(c>a) {
-			if(c>b) {
+		}else if(c>a && c>b) {
 				return c;
-			}
 		}
 	}
 	/*This method will round a double to two decimal places
