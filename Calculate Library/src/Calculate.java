@@ -99,7 +99,7 @@ public class Calculate {
 			return a;
 		}else if(a==0) {
 			return 0.;
-		}else if(a<0) {
+		}else {//why can't I use else if
 			return -a;
 		}
 	}
@@ -110,7 +110,7 @@ public class Calculate {
 	public static double max(double a, double b) {
 		if(a>b) {
 			return a;
-		}else if(a<b) {
+		}else {//why can't i use else if
 			return b;
 		}//what if a==b
 	}
@@ -130,6 +130,13 @@ public class Calculate {
 			if(c>b) {
 				return c;
 			}
-		} 
+		}
+	}
+	/*This method will round a double to two decimal places
+	 * returns a double
+	 */
+	public static double round2(double a) {
+		double b = (a*1000)%10;
+		return (a*1000 - b)/1000;
 	}
 }
