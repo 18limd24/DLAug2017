@@ -122,9 +122,22 @@ public class Calculate {
 				return a;
 		}else if(b>a && b >c) {
 				return b;
-			}
-		}else if(c>a && c>b) {
+			}else if(c>a && c>b) {
 				return c;
+		}else {
+			return a;
+		}
+	}
+	/*Minimum finds minimum 
+	 * 
+	 */
+	public static int min(int a, int b) {
+		if(a<b) {
+			return a;
+		}else if(b<a) {
+			return b;
+		}else {
+			return a;
 		}
 	}
 	/*This method will round a double to two decimal places
@@ -132,6 +145,22 @@ public class Calculate {
 	 */
 	public static double round2(double a) {
 		double b = (a*1000)%10;
-		return (a*1000 - b)/1000;
+		if(b<=4) {
+			return (a*1000 - b)/1000;
+		}else {
+			return (a*1000 - b + 10)/1000;
+		}
+
+	}
+	/*This method raises a to the positive integer value
+	 * accepts a double and an integer, returns a doub;e
+	 * assume exponent is positive
+	 */
+	public static double exponent(double a, int b) {
+		double result = a;
+		for(int x = 1; x<=b; x++) {
+			result *= a;
+		}
+		return result;
 	}
 }
