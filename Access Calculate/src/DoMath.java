@@ -15,7 +15,7 @@ public class DoMath {
 		System.out.println(Calculate.toImproperFrac(3,1,2));
 		System.out.println(Calculate.toMixedNumber(7,2));
 		System.out.println(Calculate.foil(2,3,6, -7));
-		System.out.println(Calculate.isDivisibileBy(4,2));
+		System.out.println(Calculate.isDivisibleBy(4,2));
 		System.out.println(Calculate.absValue(-20));
 		System.out.println(Calculate.max(1, 2));
 		System.out.println(Calculate.max(1,2,3));
