@@ -84,7 +84,7 @@ public class Calculate {
 	/*determines whether or not one integer is evenly divisible by another
 	 * accepts two integers and returns a boolean
 	 */
-	public static boolean isDivisibileBy(int a, int b) {
+	public static boolean isDivisibleBy(int a, int b) {
 		if(a%b==0) {
 			return true;
 		}else {
@@ -153,14 +153,46 @@ public class Calculate {
 
 	}
 	/*This method raises a to the positive integer value
-	 * accepts a double and an integer, returns a doub;e
+	 * accepts a double and an integer, returns a double
 	 * assume exponent is positive
 	 */
 	public static double exponent(double a, int b) {
 		double result = a;
-		for(int x = 1; x<=b; x++) {
+		for(int x = 2; x<=b; x++) {
 			result *= a;
 		}
 		return result;
+	}
+	/*This method returns the factorial of the value passed
+	 * !
+	 * accepts and integer and returns an integer
+	 */
+	public static int factorial(int a) {
+		int answer = a;
+		for(int n = a; n>=2;n--) {
+			answer *= n - 1;
+		}
+		return answer;
+	}
+	/*This method determines whether or not an integer is prime
+	 * accepts an integer and returns a boolean
+	 */
+	public static boolean isPrime(int number) {
+		/*Need a variable to count number of variables
+		 *name it factors count
+		 *starts at 1 because has at least itself
+		 */
+		int factorCount = 1;
+		for(int i = 2;i<=number;i++) {
+			//i=2 because factor of 1 already works for every number
+			boolean test = isDivisibleBy(number,i);
+			factorCount++;//counts # of factors
+		}
+		if(factorCount>1) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 }
