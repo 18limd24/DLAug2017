@@ -129,7 +129,7 @@ public class Calculate {
 		}
 	}
 	/*Minimum finds minimum 
-	 * 
+	 * of two ints
 	 */
 	public static int min(int a, int b) {
 		if(a<b) {
@@ -183,10 +183,11 @@ public class Calculate {
 		 *starts at 1 because has at least itself
 		 */
 		int factorCount = 1;
-		for(int i = 2;i<=number;i++) {
+		for(int i = 2;i<number;i++) {
 			//i=2 because factor of 1 already works for every number
 			boolean test = isDivisibleBy(number,i);
-			factorCount++;//counts # of factors
+			if(test = true) {
+				factorCount++;//counts # of factors
 		}
 		if(factorCount>1) {
 			return false;
