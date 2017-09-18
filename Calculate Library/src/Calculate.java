@@ -200,42 +200,58 @@ public class Calculate {
 	 * and returns a boolean
 	 */
 	public static boolean isPrime(int number) {
-		/*Need a variable to count number of variables
-		 *name it factors count
-		 *starts at 1 because has at least itself
+		/*
+		 * Need a variable to count number of variables name it factors count starts at
+		 * 1 because has at least itself
 		 */
 		int factorCount = 1;
-		for(int i = 2;i<number;i++) {
-			//i=2 because factor of 1 already works for every number
-			boolean test = isDivisibleBy(number,i);
-			if(test == true) {
-				factorCount++;//counts # of factors
+		for (int i = 2; i < number; i++) {
+			// i=2 because factor of 1 already works for every number
+			boolean test = isDivisibleBy(number, i);
+			if (test == true) {
+				factorCount++;// counts # of factors
+			}
 		}
-		}
-		if(factorCount>1) {
+		if (factorCount > 1) {
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
-	/*This method will find the greatest common factor
-	 * accepts two ints, returns gcf in an int form
+
+	/*
+	 * This method will find the greatest common factor accepts two ints, returns
+	 * gcf in an int form
 	 */
 	public static int gcf(int greaterN, int lesserN) {
 		int A = greaterN;
 		int B = lesserN;
 		int result;
-		while(B!=0) {
-			result = A%B;
+		while (B != 0) {
+			result = A % B;
 			A = B;
 			B = result;
 		}
 		return A;
 	}
-	/*This method returns an approximation of the square root
-	 * accepts a double returns a double
+
+	/*
+	 * This method returns an approximation of the square root accepts a double
+	 * returns a double
 	 */
-	public static double sqrt(double number) {
-		
+	public static double sqrt(double n) {
+		// how will I get the square root? loop?
+		// square root of N is about= ½(N/A + A)
+		// N is number to square root and then A is educated guess
+		// repeatedly replace educated guess
+		// return root
+		double root = 0;
+		double A = n / 2;// our educated guess
+		while (root != (n / A + A) / 2) {// because we WANT the root to equal that
+			root = (n / A + A) / 2;// calculates
+			A = root;
+		}
+		double answer = round2(root);
+		return answer;
 	}
 }
