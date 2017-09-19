@@ -186,6 +186,8 @@ public class Calculate {
 	/*
 	 * This method returns the factorial of the value passed ! accepts and integer
 	 * and returns an integer
+	 * pre:a>0
+	 * post:
 	 */
 	public static int factorial(int a) {
 		int answer = a;
@@ -254,4 +256,8 @@ public class Calculate {
 		double answer = round2(root);
 		return answer;
 	}
+	/*This method uses coefficients of a quadratic equation in standard form
+	 * and uses quadratic formula to approximate the real roots, if any
+	 * accepts three ints and returns a string
+	 */
 }
