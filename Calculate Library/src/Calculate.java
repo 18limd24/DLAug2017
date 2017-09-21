@@ -187,10 +187,18 @@ public class Calculate {
 	 * This method returns the factorial of the value passed ! accepts and integer
 	 * and returns an integer
 	 * pre:a>0
-	 * post:
+	 * post:positive factorial
 	 */
 	public static int factorial(int a) {
 		int answer = a;
+		if(a<0) {
+			throw new IllegalArgumentException();
+			//exception works!
+			//need to debug for a=0
+		}
+		if(a == 0) {
+			return 1;
+		}
 		for (int n = a; n >= 2; n--) {
 			answer *= n - 1;
 		}
