@@ -208,6 +208,8 @@ public class Calculate {
 	/*
 	 * This method determines whether or not an integer is prime accepts an integer
 	 * and returns a boolean
+	 * 
+	 * 
 	 */
 	public static boolean isPrime(int number) {
 		/*
