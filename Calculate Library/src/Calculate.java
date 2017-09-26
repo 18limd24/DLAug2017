@@ -95,12 +95,18 @@ public class Calculate {
 	/*
 	 * determines whether or not one integer is evenly divisible by another accepts
 	 * two integers and returns a boolean
+	 * pre: b!=0
+	 * post: should return true if evenly divisible, false if not
 	 */
 	public static boolean isDivisibleBy(int a, int b) {
+		if(b==0) {
+			throw new IllegalArgumentException();
+		}else {
 		if (a % b == 0) {
 			return true;
 		} else {
 			return false;
+		}
 		}
 	}
 
@@ -177,10 +183,18 @@ public class Calculate {
 	 */
 	public static double exponent(double a, int b) {
 		double result = a;
+		if(b<0) {
+			throw new IllegalArgumentException();
+			//should I do an exception or actually make a method to calculate this?
+		}else if(b == 0){
+			return 1;
+		}else {
+			
 		for (int x = 2; x <= b; x++) {
 			result *= a;
 		}
 		return result;
+		}
 	}
 
 	/*
@@ -257,6 +271,10 @@ public class Calculate {
 		// N is number to square root and then A is educated guess
 		// repeatedly replace educated guess
 		// return root
+		// n >=0
+		if(n<0) {
+			throw new IllegalArgumentException();
+		}else {
 		double root = 0;
 		double A = n / 2;// our educated guess
 		while (root != (n / A + A) / 2) {// because we WANT the root to equal that
@@ -266,8 +284,22 @@ public class Calculate {
 		double answer = round2(root);
 		return answer;
 	}
+	}
 	/*This method uses coefficients of a quadratic equation in standard form
 	 * and uses quadratic formula to approximate the real roots, if any
 	 * accepts three ints and returns a string
-	 */
+	 */ 
+	public static String quadForm(int a, int b, int c) {
+		String answer;
+		if(discriminant(a,b,c) < 0) {
+			answer = "no real roots";
+		}else if (discriminant(a,b,c) == 0) {
+			answer = round2(-b/(2*a));
+		}else {
+			double answer1 = ((-b + discriminant(a,b,c))/(2*a));
+			double answer2 = ((-b - discriminant(a,b,c))/(2*a));
+			answer = round2(answer1) + " and " + round2(answer2);
+		}
+		}
+	}
 }

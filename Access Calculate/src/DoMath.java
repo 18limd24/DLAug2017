@@ -15,13 +15,13 @@ public class DoMath {
 		System.out.println(Calculate.toImproperFrac(3,1,2));
 		System.out.println(Calculate.toMixedNumber(7,2));
 		System.out.println(Calculate.foil(2,3,6, -7));
-		System.out.println(Calculate.isDivisibleBy(4,2));
+		System.out.println(Calculate.isDivisibleBy(2,4));
 		System.out.println(Calculate.absValue(-20));
 		System.out.println(Calculate.max(1, 2));
 		System.out.println(Calculate.max(1,2,3));
 		System.out.println(Calculate.min(1,2));
 		System.out.println(Calculate.round2(3.526));
-		System.out.println(Calculate.exponent(4, 3));
+		System.out.println(Calculate.exponent(2,3));
 		System.out.println(Calculate.factorial(2));
 		System.out.println(Calculate.isPrime(7));
 		System.out.println(Calculate.gcf(36, 12));
