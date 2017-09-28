@@ -290,16 +290,16 @@ public class Calculate {
 	 * accepts three ints and returns a string
 	 */ 
 	public static String quadForm(int a, int b, int c) {
-		String answer;
+		String answer = "";
 		if(discriminant(a,b,c) < 0) {
-			answer = "no real roots";
+			answer += "no real roots";
 		}else if (discriminant(a,b,c) == 0) {
-			answer = round2(-b/(2*a));
+			answer += round2(-b/(2*a));
 		}else {
-			double answer1 = ((-b + discriminant(a,b,c))/(2*a));
-			double answer2 = ((-b - discriminant(a,b,c))/(2*a));
-			answer = round2(answer1) + " and " + round2(answer2);
+			double answer1 = ((-b + sqrt(discriminant(a,b,c)))/(2*a));
+			double answer2 = ((-b - sqrt(discriminant(a,b,c)))/(2*a));
+			answer += round2(answer1) + " and " + round2(answer2);
 		}
+		return answer;
 		}
 	}
-}
