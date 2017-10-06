@@ -25,7 +25,7 @@ public class ProcessingNumbers {
 		int smallestN = console.nextInt();
 		/*if(smallestN %2 == 0) {
 		*	sum += smallestN;
-		*/}
+		}*/
 		int greatestEvenNumber = -999999;
 		int next = smallestN;
 		for (int i = 1; i < totalN; i++) {
