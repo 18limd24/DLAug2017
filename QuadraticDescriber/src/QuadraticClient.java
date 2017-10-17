@@ -12,7 +12,7 @@ public class QuadraticClient {
 		double a = console.nextDouble();
 		double b = console.nextDouble();
 		double c = console.nextDouble();
-		String description = quadrDescriber(a,b,c);
+		String description = Quadratic.quadrDescriber(a,b,c);
 		System.out.print(description);
 		//ask if they want to go again
 	}
