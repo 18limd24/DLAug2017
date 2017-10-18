@@ -7,14 +7,25 @@ import java.util.*;//for Scanner
 public class QuadraticClient {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
+		
+		do {
 		System.out.println("Welcome to the Quadratic Describer");
 		System.out.println("Provide values for coefficients a, b, and c");
+		System.out.print("a: ");
 		double a = console.nextDouble();
+		System.out.print("b: ");
 		double b = console.nextDouble();
+		System.out.print("c: ");
 		double c = console.nextDouble();
+		System.out.println();
 		String description = Quadratic.quadrDescriber(a,b,c);
-		System.out.print(description);
-		//ask if they want to go again
+		System.out.println(description);
+		System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+		//String quit = console.next();
+		}while(!(console.next().equals("quit"))); 
+		
+		
 	}
+	
 
 }

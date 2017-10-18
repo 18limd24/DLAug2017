@@ -51,32 +51,40 @@ public class Quadratic {
 		return discriminant;
 	}
 	public static String quadrDescriber(double a, double b, double c) {
-		System.out.println(a + "x^2 + " + b + "x + " + c);
+		String descEquation = "Description of the graph of:\n";
+		String equation = a + "x^2 + " + b + "x + " + c + "\n";
 		if(a == 0) {
 			return "Not a quadratic equation";
 		}
 		//Describe orientation
-		String orientation = "";
+		String orientation = "Opens: ";
 		if(a > 0) {
-			orientation = "Up";
+			orientation += "Up";
 		}else {
-			orientation = "Down";
+			orientation += "Down";
 		}
 		//Describe Axis of symmetry
-		double aos;
+		double aos = -b/(2*a);
 		
 		//Describe Vertex
-		
+		double x = -b/(2*a);
+		double y = a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c;
+		String vertex = "(" + x + ", " + y + ")";
 		//Describe x-intercept
 		String roots = quadForm(a,b,c);
+		if(roots.equals("no real roots")) {
+			roots = "None";
+		}
 		
 		//Describe y-intercept
+		double yInt = c;
 		/*System.out.print("Opens: ");
 		if(a>0) {
 			System.out.println("Up");
 		}else {//if(a<0)
 			System.out.println("Down");
 		}*/
+		return descEquation + equation + orientation + "\nAxis of Symmetry: " + aos + "\nVertex: " + vertex + "\nx-intercept(s): " + roots + "\ny-intercept: " + yInt;
 	}
 
 }
