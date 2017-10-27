@@ -20,7 +20,7 @@ public class Split {
 		// play around with String.split! what happens if you "I reallyreally like
 		// apples".split("really") ?
 		System.out.println(Arrays.toString("I reallyreally like apples".split("really")));
-		
+		System.out.println(Arrays.toString("really I like apples".split("really")));
 
 		// Your task:
 		/*
@@ -30,15 +30,13 @@ public class Split {
 		 * return what's in the middle of the sandwich and ignores what's on the outside
 		 * What if it's a fancy sandwich with multiple pieces of bread?
 		 */
-		public static String[] sandwichSplit(String sandwich) {
-			sandwich.split("bread");
-		}
-		System.out.println(Arrays.toString(sandwichSplit("applespineapplesbreadlettustomatobaconmayohambreadcheese")));
+		System.out.println(breadSplit("applespineapplesbreadlettustomatobaconmayohambreadcheese"));
+		//need to consider special
 
 		// Your task pt 2:
 		/*
 		 * Write a method that take in a string like
-		 * "apples pineapples bread lettus tomato bacon mayo ham bread cheese"
+		 * "apples pineapples bread lettuce tomato bacon mayo ham bread cheese"
 		 * describing a sandwich use String.split to split up the sandwich at the
 		 * spaces, " ", and return what's in the middle of the sandwich and ignores
 		 * what's on the outside Again, what if it's a fancy sandwich with multiple
@@ -46,5 +44,14 @@ public class Split {
 		 */
 
 	}
+	public static String breadSplit(String sandwich) {
+		String[] lunch = sandwich.split("bread");
+		return lunch[1];
+	}
+	public static String realSandwich(String sandwich) {
+		String splitS = breadSplit(sandwich);
+		
+	}
+
 
 }
