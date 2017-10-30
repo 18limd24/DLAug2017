@@ -31,6 +31,7 @@ public class Split {
 		 * What if it's a fancy sandwich with multiple pieces of bread?
 		 */
 		System.out.println(breadSplit("applespineapplesbreadlettustomatobaconmayohambreadcheese"));
+		System.out.println(breadSplit("applespineapplesbreadlettucetomatobaconbreadhambreadcheese"));
 		//need to consider special
 
 		// Your task pt 2:
@@ -42,15 +43,24 @@ public class Split {
 		 * what's on the outside Again, what if it's a fancy sandwich with multiple
 		 * pieces of bread?
 		 */
+		System.out.println(realSandwich("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
+		System.out.println(realSandwich("apples bread pineapples lettuce tomato bacon bread mayo ham bread cheese"));
 
 	}
 	public static String breadSplit(String sandwich) {
 		String[] lunch = sandwich.split("bread");
+		if(lunch.length > 3) {
+			String inside = "";
+			for(int i = 1; i < lunch.length - 1; i++) {
+				inside += lunch[i];
+			}
+			return inside;
+		}
 		return lunch[1];
 	}
 	public static String realSandwich(String sandwich) {
 		String splitS = breadSplit(sandwich);
-		
+		return splitS;
 	}
 
 
