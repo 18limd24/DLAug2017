@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*Darren Lim
  * 10/31/17
  * This is our arrays lab
@@ -106,7 +108,11 @@ public class ArraysLab3 {
 		int sumOfEvens = sumEven(appendArr);
 		rotateRight(a1);
 		
-		System.out.println("sum);
+		System.out.println("sumArr: " + Arrays.toString(sumArr));
+		System.out.println("appendArr: " + Arrays.toString(appendArr));
+		System.out.println("removeArr: " + Arrays.toString(removeArr));
+		System.out.println("sumOfEvens: " + sumOfEvens);
+		System.out.println("a1: " + Arrays.toString(a1));
 	}
 
 
