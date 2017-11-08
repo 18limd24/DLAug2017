@@ -9,9 +9,17 @@ public class FracCalc {
 
     public static void main(String[] args) {
         // TODO: Read the input from the user and call produceAnswer with an equation
+    	System.out.println("Enter calculations");
     	Scanner console = new Scanner(System.in);
-    	String firstInput = console.nextLine();
-    	System.out.println(produceAnswer(firstInput));
+    	//String firstInput = console.nextLine();
+    	//System.out.println(produceAnswer(firstInput));
+		String input = console.nextLine();
+    	
+    	while(!console.nextLine().equals("quit")) {
+
+    		System.out.println(produceAnswer(input));
+    		input = console.nextLine();
+    	}
 
     }
     
@@ -26,7 +34,15 @@ public class FracCalc {
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
         String[] threeStrings = input.split(" ");
-        return threeStrings[2];
+        String operand2 = threeStrings[2];
+        //need operand 2
+        String[] splitMixedN = operand2.split("_");//splits up the whole number and the fraction
+        String whole = "whole:" + splitMixedN[0] + " ";
+        String frac = splitMixedN[1];
+        String[] splitFrac = frac.split("/");
+        String numerator = "numerator:" + splitFrac[0] + " ";
+        String denominator ="denominator:" + splitFrac[1] + "";
+        return whole + numerator + denominator;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
