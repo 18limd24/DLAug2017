@@ -36,13 +36,27 @@ public class FracCalc {
         String[] threeStrings = input.split(" ");
         String operand2 = threeStrings[2];
         //need operand 2
+        
         String[] splitMixedN = operand2.split("_");//splits up the whole number and the fraction
-        String whole = "whole:" + splitMixedN[0] + " ";
-        String frac = splitMixedN[1];
-        String[] splitFrac = frac.split("/");
-        String numerator = "numerator:" + splitFrac[0] + " ";
-        String denominator ="denominator:" + splitFrac[1] + "";
-        return whole + numerator + denominator;
+        if(splitMixedN.length == 0) {
+        	String[] splitFrac = splitMixedN[0].split("/");
+        			if(splitFrac.length == 0) {
+        				String whole = "whole:" + splitMixedN[0] + " ";
+        			}else {
+        				String whole = "whole:0 ";
+        				String numerator = "numerator:" + splitFrac[0] + " ";
+        				String denominator = "denominator " + splitFrac[2] + " ";
+        			}
+        }
+        if(splitMixedN.length > 1) {
+        	String frac = splitMixedN[1];
+        	String[] splitFrac = frac.split("/");
+        	String numerator = "numerator:" + splitFrac[0] + " ";
+        	String denominator ="denominator:" + splitFrac[1] + "";	
+        	return whole + numerator + denominator;
+        }
+        return whole + "numerator:0 " + "denominator:1";
+        
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
