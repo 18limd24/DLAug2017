@@ -34,30 +34,36 @@ public class FracCalc {
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
         String[] threeStrings = input.split(" ");
+        String operand1 = threeStrings[0];
         String operand2 = threeStrings[2];
-        //need operand 2
-        
-        String[] splitMixedN = operand2.split("_");//splits up the whole number and the fraction
-        if(splitMixedN.length == 0) {
-        	String[] splitFrac = splitMixedN[0].split("/");
-        			if(splitFrac.length == 0) {
-        				String whole = "whole:" + splitMixedN[0] + " ";
-        			}else {
-        				String whole = "whole:0 ";
-        				String numerator = "numerator:" + splitFrac[0] + " ";
-        				String denominator = "denominator " + splitFrac[2] + " ";
-        			}
-        }
-        if(splitMixedN.length > 1) {
-        	String frac = splitMixedN[1];
-        	String[] splitFrac = frac.split("/");
-        	String numerator = "numerator:" + splitFrac[0] + " ";
-        	String denominator ="denominator:" + splitFrac[1] + "";	
-        	return whole + numerator + denominator;
-        }
-        return whole + "numerator:0 " + "denominator:1";
-        
+        splitOperand(operand1);
+        return Arrays.toString(splitOperand(operand2));
     }
+    public static String[] splitOperand(String operand) {
+    	String whole = "";
+    	String numerator = "";
+    	String denominator = "";
+    	if(operand.indexOf("_") >= 0) {//tests if it is a mixed number
+    		whole = "whole:" + operand.substring(0, operand.indexOf("_") - 1) + " ";
+    	}else {
+    		whole = "whole:0 ";
+    	}
+    	if(operand.indexOf("/") >= 0) {//tests if there is a fraction
+    		if(operand.indexOf("_") >= 0) {
+    			numerator = "numerator:" + operand.substring(operand.indexOf("_") + 1, operand.indexOf("/") - 1) + " ";
+    			
+    		}else {
+    			numerator = "numerator:" + operand.substring(0, operand.indexOf("/") - 1);
+    			denominator = "denominator:" + operand.substring(operand.indexOf("/") + 1, operand.length() -1);
+    			}
+    	}else {
+    		numerator = "numerator:0 ";
+    		denominator = "denominator:1 ";
+    	}
+    	String[] answer = {whole, numerator, denominator};
+    	return answer;
+    }
+        
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
