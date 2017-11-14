@@ -37,31 +37,34 @@ public class FracCalc {
         String operand1 = threeStrings[0];
         String operand2 = threeStrings[2];
         splitOperand(operand1);
-        return Arrays.toString(splitOperand(operand2));
+        return splitOperand(operand2);
     }
-    public static String[] splitOperand(String operand) {
-    	String whole = "";
-    	String numerator = "";
-    	String denominator = "";
-    	if(operand.indexOf("_") >= 0) {//tests if it is a mixed number
-    		whole = "whole:" + operand.substring(0, operand.indexOf("_") - 1) + " ";
-    	}else {
-    		whole = "whole:0 ";
-    	}
-    	if(operand.indexOf("/") >= 0) {//tests if there is a fraction
-    		if(operand.indexOf("_") >= 0) {
-    			numerator = "numerator:" + operand.substring(operand.indexOf("_") + 1, operand.indexOf("/") - 1) + " ";
-    			
-    		}else {
-    			numerator = "numerator:" + operand.substring(0, operand.indexOf("/") - 1);
-    			denominator = "denominator:" + operand.substring(operand.indexOf("/") + 1, operand.length() -1);
-    			}
-    	}else {
-    		numerator = "numerator:0 ";
-    		denominator = "denominator:1 ";
-    	}
-    	String[] answer = {whole, numerator, denominator};
-    	return answer;
+
+	public static String splitOperand(String operand) {
+		String whole = "";
+		String numerator = "";
+		String denominator = "";
+		if (operand.indexOf("_") >= 0) {// tests if it is a mixed number
+			whole = "whole:" + operand.substring(0, operand.indexOf("_")) + " ";
+		} else {
+			whole = "whole:0 ";
+		}
+		
+		if (operand.indexOf("/") >= 0) {// tests if there is a fraction
+			if (operand.indexOf("_") >= 0) {
+				numerator = "numerator:" + operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")) + " ";
+
+			} else {
+				numerator = "numerator:" + operand.substring(0, operand.indexOf("/")) + " ";
+			}
+			denominator = "denominator:" + operand.substring(operand.indexOf("/") + 1, operand.length());
+		} else {
+			whole = "whole:" + operand;
+			numerator = " numerator:0 ";
+			denominator = "denominator:1";
+		}
+		String answer = whole + numerator + denominator;
+		return answer;
     }
         
 
