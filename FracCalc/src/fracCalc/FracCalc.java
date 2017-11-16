@@ -15,10 +15,13 @@ public class FracCalc {
     	//System.out.println(produceAnswer(firstInput));
 		String input = console.nextLine();
     	
-    	while(!console.nextLine().equals("quit")) {
+    	while(!input.equals("quit")) {
 
     		System.out.println(produceAnswer(input));
+    		System.out.println("Type 'quit' to exit, otherwise, enter new calculations");
     		input = console.nextLine();
+    		
+    		
     	}
 
     }
