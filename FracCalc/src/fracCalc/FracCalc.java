@@ -39,36 +39,54 @@ public class FracCalc {
         String[] threeStrings = input.split(" ");
         String operand1 = threeStrings[0];
         String operand2 = threeStrings[2];
-        splitOperand(operand1);
-        return splitOperand(operand2);
+        //String[] mixedN1 = splitOperand(operand1);//can just simplify
+        //String[] mixedN2 = splitOperand(operand2);
+        int[] mixedN1 = {Integer.parseInt(splitOperand(operand1)[0]),Integer.parseInt(splitOperand(operand1)[1]), Integer.parseInt(splitOperand(operand1)[2])};
+        int[] mixedN2 = {Integer.parseInt(splitOperand(operand2)[0]),Integer.parseInt(splitOperand(operand2)[1]),Integer.parseInt(splitOperand(operand2)[2])};
+        int[] frac1 = toImproperFrac(mixedN1);
+        int[] frac2 = toImproperFrac(mixedN2);
+        
+        return "whole:" + mixedN2[0] + " numerator:" + mixedN2[1] + " denominator:" + mixedN2[2];
     }
 
-	public static String splitOperand(String operand) {
+	public static String[] splitOperand(String operand) {
 		String whole = "";
 		String numerator = "";
 		String denominator = "";
 		if (operand.indexOf("_") >= 0) {// tests if it is a mixed number
-			whole = "whole:" + operand.substring(0, operand.indexOf("_")) + " ";
+			whole = operand.substring(0, operand.indexOf("_"));
 		} else {
-			whole = "whole:0 ";
+			whole = "0";
 		}
 		
 		if (operand.indexOf("/") >= 0) {// tests if there is a fraction
 			if (operand.indexOf("_") >= 0) {
-				numerator = "numerator:" + operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")) + " ";
+				numerator = operand.substring(operand.indexOf("_") + 1, operand.indexOf("/"));
 
 			} else {
-				numerator = "numerator:" + operand.substring(0, operand.indexOf("/")) + " ";
+				numerator = operand.substring(0, operand.indexOf("/"));
 			}
-			denominator = "denominator:" + operand.substring(operand.indexOf("/") + 1, operand.length());
+			denominator = operand.substring(operand.indexOf("/") + 1, operand.length());
 		} else {
-			whole = "whole:" + operand;
-			numerator = " numerator:0 ";
-			denominator = "denominator:1";
+			whole = operand;
+			numerator = "0";
+			denominator = "1";
 		}
-		String answer = whole + numerator + denominator;
+		String[] answer = {whole, numerator, denominator};
 		return answer;
     }
+	public static int[] toImproperFrac(int[] mixedN) {
+		//whole: mixedN[0] numerator: mixedN[1] denominator: mixedN[2]
+		int topN = mixedN[0]*mixedN[2];
+		int[] improperFrac = {topN, mixedN[2]};
+		return improperFrac;
+	}
+	public static void commonDenom(int[] frac1, int[] frac2) {
+		frac1[0] *= frac2[1];
+		frac1[1] *= frac2[1];
+		frac2[0] *= frac1[1];
+		frac2[1] *= frac1[1];
+	}
         
 
     // TODO: Fill in the space below with any helper methods that you think you will need
