@@ -38,6 +38,7 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
         String[] threeStrings = input.split(" ");
         String operand1 = threeStrings[0];
+        String operator = threeStrings[1];
         String operand2 = threeStrings[2];
         //String[] mixedN1 = splitOperand(operand1);//can just simplify
         //String[] mixedN2 = splitOperand(operand2);
@@ -45,8 +46,24 @@ public class FracCalc {
         int[] mixedN2 = {Integer.parseInt(splitOperand(operand2)[0]),Integer.parseInt(splitOperand(operand2)[1]),Integer.parseInt(splitOperand(operand2)[2])};
         int[] frac1 = toImproperFrac(mixedN1);
         int[] frac2 = toImproperFrac(mixedN2);
+        commonDenom(frac1,frac2);
+        int[] answer = new int[2];
+        if(operator.equals("+")) {
+        	answer = addition(frac1,frac2);
+        }else if(operator.equals("-")) {
+        	frac2[0] *= -1;
+        	answer = addition(frac1, frac2);
+        }else if(operator.equals("*")) {
+        	answer = multiplication(frac1,frac2);
+        }else if(operator.equals("/")) {
+        	int temp = frac2[0];
+        	frac2[0] = frac2[1];
+        	frac2[1] = temp;
+        	answer = multiplication(frac1,frac2);
+        }
         
-        return "whole:" + mixedN2[0] + " numerator:" + mixedN2[1] + " denominator:" + mixedN2[2];
+        //return "whole:" + mixedN2[0] + " numerator:" + mixedN2[1] + " denominator:" + mixedN2[2];
+        return answer[0] + "/" + answer[1];
     }
 
 	public static String[] splitOperand(String operand) {
@@ -86,6 +103,15 @@ public class FracCalc {
 		frac1[1] *= frac2[1];
 		frac2[0] *= frac1[1];
 		frac2[1] *= frac1[1];
+	}
+	
+	public static int[] addition(int[] frac1,int[] frac2) {
+		int[] answer = {frac1[0] + frac2[0], frac1[1]};
+		return answer;
+	}
+	public static int[] multiplication(int[] frac1, int[] frac2) {
+		int[] answer = {frac1[0] * frac2[0], frac1[1]*frac2[1]};
+		return answer;
 	}
         
 
