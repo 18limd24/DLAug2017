@@ -46,7 +46,10 @@ public class FracCalc {
         int[] mixedN2 = {Integer.parseInt(splitOperand(operand2)[0]),Integer.parseInt(splitOperand(operand2)[1]),Integer.parseInt(splitOperand(operand2)[2])};
         int[] frac1 = toImproperFrac(mixedN1);
         int[] frac2 = toImproperFrac(mixedN2);
-        commonDenom(frac1,frac2);
+        //if(frac1[1] != frac2[1]) {
+        	commonDenom(mixedN1,mixedN2);
+        
+        //}
         int[] answer = new int[2];
         if(operator.equals("+")) {
         	answer = addition(frac1,frac2);
