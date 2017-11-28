@@ -100,9 +100,10 @@ public class FracCalc {
 	}
 	public static void commonDenom(int[] frac1, int[] frac2) {
 		frac1[0] *= frac2[1];
+		int temp = frac1[1];
 		frac1[1] *= frac2[1];
-		frac2[0] *= frac1[1];
-		frac2[1] *= frac1[1];
+		frac2[0] *= temp;
+		frac2[1] *= temp;
 	}
 	
 	public static int[] addition(int[] frac1,int[] frac2) {
