@@ -139,7 +139,7 @@ public class FracCalc {
 		return answer;
 	}
 	public static int gcf(int greaterN, int lesserN) {
-		if(absValue(greaterN) 
+		//if(absValue(greaterN) 
 		int a = greaterN;
 		int b = lesserN;
 		int result;
