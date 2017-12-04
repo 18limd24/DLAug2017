@@ -64,7 +64,7 @@ public class FracCalc {
         	frac2[1] = temp;
         	answer = multiplication(frac1,frac2);
         }
-        //reduceFrac(answer);
+        reduceFrac(answer);
         return answer[0] + "/" + answer[1];
     }
 
