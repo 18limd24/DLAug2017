@@ -64,8 +64,26 @@ public class FracCalc {
         	frac2[1] = temp;
         	answer = multiplication(frac1,frac2);
         }
-        reduceFrac(answer);
-        return answer[0] + "/" + answer[1];
+        //reduceFrac(answer);
+        if(answer[0] == 0) {
+        	return "0";
+        } else if(answer[1] == 1) {
+        	return "" + answer[0];
+        }else if(answer[0] > 0) {
+        	if(answer[0] < answer[1]) {
+        		return answer[0] + "/" + answer[1];
+        	} else {
+        		int[] mixedAnswer = toMixedN(answer);
+        		return mixedAnswer[0] + "_" + mixedAnswer[1] + "/" + mixedAnswer[2];
+        	}
+    	}else {
+    		if(-answer[0] < answer[1]) {
+    			return answer[0] + "/" + answer[1];
+    		}else {
+    			int[] mixedAnswer = toMixedN(answer);
+    			return mixedAnswer[0] + "_" + -mixedAnswer[1] + "/" + mixedAnswer[2];
+    		}
+    	}
     }
 
 	public static String[] splitOperand(String operand) {
@@ -120,29 +138,71 @@ public class FracCalc {
 		int[] answer = {frac1[0] * frac2[0], frac1[1]*frac2[1]};
 		return answer;
 	}
-	public static void reduceFrac(int[] unreducFrac) {
+	public static int gcf(int greaterN, int lesserN) {
+		if(absValue(greaterN) 
+		int a = greaterN;
+		int b = lesserN;
+		int result;
+		while (b != 0) {
+			result = a % b;
+			a = b;
+			b = result;
+		}
+		return a;
+	//public static void reduceFrac(int[] unreducFrac) {
 		//first gets gcf
-		int greaterN = 0;
+		/*int greaterN = 0;
 		int lesserN = 0;
-		if(unreducFrac[0] < unreducFrac[1]) {
+		if(absValue(unreducFrac[0]) > unreducFrac[1]) {
 			greaterN = unreducFrac[0];
 			lesserN = unreducFrac[1];
-		}else if(unreducFrac[0] > unreducFrac[1]) {
+		}else if(absValue(unreducFrac[0]) < unreducFrac[1]) {
 			greaterN = unreducFrac[1];
 			lesserN = unreducFrac[0];
 		}
-		int gcf = 1;
-		while (lesserN != 0) {
-			gcf = greaterN % lesserN;
-			greaterN = lesserN;
-			greaterN = gcf;
+		int num = 1;
+		if(unreducFrac[0] > 1) {
+			while (lesserN != 0) {
+				num = greaterN % lesserN;
+				greaterN = lesserN;
+				lesserN = num;
+			}
+		}else {
+			while(lesserN != 0) {
+				num = absValue(greaterN % lesserN);
+				greaterN = absValue(lesserN);
+				lesserN = num;
+			}
 		}
-		unreducFrac[0] /= gcf;
-		unreducFrac[1] /= gcf;
-	
+		if(num != 0) {
+			unreducFrac[0] = unreducFrac[0]/ greaterN;
+			unreducFrac[1] = unreducFrac[1]/ greaterN;
+		}
+		*/
+		
+		
+    // TODO: Fill in the space below with any helper methods that you think you will need	
 	}
+	public static int[] toMixedN(int[] improperAnswer) {
+		int[] mixedAnswer = new int[3];
+		//whole, num, denom
+		mixedAnswer[0] = improperAnswer[0]/improperAnswer[1];
+		mixedAnswer[1] = improperAnswer[0]%improperAnswer[1];
+		mixedAnswer[2] = improperAnswer[1];
+		return mixedAnswer;
+	}
+	public static int absValue(int a) {
+		if (a > 0) {
+			return a;
+		} else if (a == 0) {
+			return 0;
+		} else {
+			return -a;
+		}
+	}
+
         
 
-    // TODO: Fill in the space below with any helper methods that you think you will need
+
     
 }
