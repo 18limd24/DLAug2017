@@ -47,7 +47,7 @@ public class FracCalc {
         int[] frac1 = toImproperFrac(mixedN1);
         int[] frac2 = toImproperFrac(mixedN2);
         //if(frac1[1] != frac2[1]) {
-        	commonDenom(mixedN1,mixedN2);
+        commonDenom(frac1,frac2);
         
         //}
         int[] answer = new int[2];
@@ -64,8 +64,7 @@ public class FracCalc {
         	frac2[1] = temp;
         	answer = multiplication(frac1,frac2);
         }
-        
-        //return "whole:" + mixedN2[0] + " numerator:" + mixedN2[1] + " denominator:" + mixedN2[2];
+        //reduceFrac(answer);
         return answer[0] + "/" + answer[1];
     }
 
@@ -98,6 +97,10 @@ public class FracCalc {
 	public static int[] toImproperFrac(int[] mixedN) {
 		//whole: mixedN[0] numerator: mixedN[1] denominator: mixedN[2]
 		int topN = mixedN[0]*mixedN[2];
+		if(mixedN[0] < 0) {
+			mixedN[1] *= -1;
+		}
+		topN += mixedN[1];
 		int[] improperFrac = {topN, mixedN[2]};
 		return improperFrac;
 	}
@@ -116,6 +119,27 @@ public class FracCalc {
 	public static int[] multiplication(int[] frac1, int[] frac2) {
 		int[] answer = {frac1[0] * frac2[0], frac1[1]*frac2[1]};
 		return answer;
+	}
+	public static void reduceFrac(int[] unreducFrac) {
+		//first gets gcf
+		int greaterN = 0;
+		int lesserN = 0;
+		if(unreducFrac[0] < unreducFrac[1]) {
+			greaterN = unreducFrac[0];
+			lesserN = unreducFrac[1];
+		}else if(unreducFrac[0] > unreducFrac[1]) {
+			greaterN = unreducFrac[1];
+			lesserN = unreducFrac[0];
+		}
+		int gcf = 1;
+		while (lesserN != 0) {
+			gcf = greaterN % lesserN;
+			greaterN = lesserN;
+			greaterN = gcf;
+		}
+		unreducFrac[0] /= gcf;
+		unreducFrac[1] /= gcf;
+	
 	}
         
 
