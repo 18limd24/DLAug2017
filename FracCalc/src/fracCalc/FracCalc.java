@@ -65,7 +65,7 @@ public class FracCalc {
         	answer = multiplication(frac1,frac2);
         }
         //reduceFrac(answer);
-        if(answer[0] == 0) {
+        /*if(answer[0] == 0) {
         	return "0";
         } else if(answer[1] == 1) {
         	return "" + answer[0];
@@ -77,13 +77,14 @@ public class FracCalc {
         		return mixedAnswer[0] + "_" + mixedAnswer[1] + "/" + mixedAnswer[2];
         	}
     	}else {
-    		if(-answer[0] < answer[1]) {
+    		if(absValue(answer[0]) < absValue(answer[1])) {
     			return answer[0] + "/" + answer[1];
     		}else {
     			int[] mixedAnswer = toMixedN(answer);
     			return mixedAnswer[0] + "_" + -mixedAnswer[1] + "/" + mixedAnswer[2];
     		}
-    	}
+    	}*/
+        return answer[0] + "/" + answer[1];
     }
 
 	public static String[] splitOperand(String operand) {
