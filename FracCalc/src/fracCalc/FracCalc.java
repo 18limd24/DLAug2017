@@ -64,7 +64,7 @@ public class FracCalc {
         	frac2[1] = temp;
         	answer = multiplication(frac1,frac2);
         }
-        //reduceFrac(answer);
+       reduceFrac(answer);
         /*if(answer[0] == 0) {
         	return "0";
         } else if(answer[1] == 1) {
@@ -86,6 +86,40 @@ public class FracCalc {
     	}*/
         return answer[0] + "/" + answer[1];
     }
+	public static void reduceFrac(int[] unreducFrac) {
+		//first gets gcf
+		int greaterN = 0;
+		int lesserN = 0;
+		if(absValue(unreducFrac[0]) > Math.abs(unreducFrac[1])) {
+			greaterN = unreducFrac[0];
+			lesserN = unreducFrac[1];
+		}else if(absValue(unreducFrac[0]) < Math.abs(unreducFrac[1])) {
+			greaterN = unreducFrac[1];
+			lesserN = unreducFrac[0];
+		}
+		int num = 1;
+		if(unreducFrac[0] > 1) {
+			while (lesserN != 0) {
+				num = greaterN % lesserN;
+				greaterN = lesserN;
+				lesserN = num;
+			}
+		}else {
+			while(lesserN != 0) {
+				num = absValue(greaterN % lesserN);
+				greaterN = absValue(lesserN);
+				lesserN = num;
+			}
+		}
+		if(greaterN != 0) {
+			unreducFrac[0] = unreducFrac[0]/ greaterN;
+			unreducFrac[1] = unreducFrac[1]/ greaterN;
+		}
+		
+		
+		
+    // TODO: Fill in the space below with any helper methods that you think you will need	
+	}
 
 	public static String[] splitOperand(String operand) {
 		String whole = "";
@@ -150,40 +184,8 @@ public class FracCalc {
 			b = result;
 		}
 		return a;
-	//public static void reduceFrac(int[] unreducFrac) {
-		//first gets gcf
-		/*int greaterN = 0;
-		int lesserN = 0;
-		if(absValue(unreducFrac[0]) > unreducFrac[1]) {
-			greaterN = unreducFrac[0];
-			lesserN = unreducFrac[1];
-		}else if(absValue(unreducFrac[0]) < unreducFrac[1]) {
-			greaterN = unreducFrac[1];
-			lesserN = unreducFrac[0];
-		}
-		int num = 1;
-		if(unreducFrac[0] > 1) {
-			while (lesserN != 0) {
-				num = greaterN % lesserN;
-				greaterN = lesserN;
-				lesserN = num;
-			}
-		}else {
-			while(lesserN != 0) {
-				num = absValue(greaterN % lesserN);
-				greaterN = absValue(lesserN);
-				lesserN = num;
-			}
-		}
-		if(num != 0) {
-			unreducFrac[0] = unreducFrac[0]/ greaterN;
-			unreducFrac[1] = unreducFrac[1]/ greaterN;
-		}
-		*/
-		
-		
-    // TODO: Fill in the space below with any helper methods that you think you will need	
 	}
+
 	public static int[] toMixedN(int[] improperAnswer) {
 		int[] mixedAnswer = new int[3];
 		//whole, num, denom
