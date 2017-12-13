@@ -9,9 +9,20 @@ public class FracCalc {
 
     public static void main(String[] args) {
         // TODO: Read the input from the user and call produceAnswer with an equation
+    	System.out.println("Enter calculations"); //Asks user for calculations
     	Scanner console = new Scanner(System.in);
-    	String firstInput = console.nextLine();
-    	System.out.println(produceAnswer(firstInput));
+    	//String firstInput = console.nextLine();
+    	//System.out.println(produceAnswer(firstInput));
+		String input = console.nextLine();
+    	
+    	while(!input.equals("quit")) {//continues to run until user enters quit
+
+    		System.out.println(produceAnswer(input));
+    		System.out.println("Type 'quit' to exit, otherwise, enter new calculations");
+    		input = console.nextLine();
+    		
+    		
+    	}
 
     }
     
@@ -29,6 +40,11 @@ public class FracCalc {
         String operand1 = threeStrings[0];//easier to read
         String operator = threeStrings[1];
         String operand2 = threeStrings[2];
+        
+        Fraction frac1 = new Fraction(operand1);
+        Fraction frac2 = new Fraction(operand2);
+        
+        return "" + frac2;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need

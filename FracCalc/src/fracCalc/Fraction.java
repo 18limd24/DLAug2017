@@ -49,17 +49,32 @@ public class Fraction {
 		//update whole to 0
 		//update numerator
 		this.numerator = (this.whole * this.denominator) + this.numerator;
-		
+		this.whole = 0;
 	}
 	private int toInt(String str) {
 		//convert string to int
 		return Integer.parseInt(str);
 	}
 	public void simplify() {
-		
+		int gcf = gcf(Math.abs(this.numerator), Math.abs(this.denominator));
+		this.numerator /= gcf;
+		this.denominator /= gcf;
 	}
 	public String toString() {
 		//creates string to be printed out
+		//return this.whole + "_" + this.numerator + "/" + this.denominator; for after checkpoint2
+		return "whole:" + this.whole + " numerator:" + this.numerator + " denominator:" + this.denominator;
+	}
+	private int gcf(int greaterN, int lesserN) {
+		int a = greaterN;
+		int b = lesserN;
+		int result;
+		while (b != 0) {
+			result = a % b;
+			a = b;
+			b = result;
+		}
+		return a;//a will be the gcf
 	}
 
 }
