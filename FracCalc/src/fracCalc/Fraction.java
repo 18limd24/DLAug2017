@@ -39,6 +39,16 @@ public class Fraction {
 		this.numerator = toInt(answer[1]);
 		this.denominator = toInt(answer[2]);
 	}
+	public Fraction(int whole, int numerator, int denominator) {
+		this.whole = whole;
+		this.numerator = numerator;
+		this.denominator = denominator;
+	}
+	public Fraction(int numerator, int denominator) {
+		this.whole = 0;
+		this.numerator = numerator;
+		this.denominator = denominator;
+	}
 	public void toMixedNumber() {
 		//updates whole and numerator
 		this.whole = this.numerator / this.denominator;
@@ -76,5 +86,32 @@ public class Fraction {
 		}
 		return a;//a will be the gcf
 	}
-
+	public int getWhole() {
+		return whole;
+	}
+	public void setWhole(int whole) {
+		this.whole = whole;
+	}
+	public int getNumerator() {
+		return numerator;
+	}
+	public void setNumerator(int numerator) {
+		this.numerator = numerator;
+	}
+	public int getDenominator() {
+		return denominator;
+	}
+	public void setDenominator(int denominator) {
+		this.denominator = denominator;
+	}
+	public Fraction multiply(Fraction frac2) {
+		int numAnswer = this.numerator * frac2.getNumerator();
+		int denomAnswer = this.denominator * frac2.getDenominator();
+		Fraction answer = new Fraction(numAnswer, denomAnswer);
+		
+		return answer;
+	}
+	public Fraction add(Fraction frac2) {
+		Fraction answer = new Fraction()
+	}
 }
