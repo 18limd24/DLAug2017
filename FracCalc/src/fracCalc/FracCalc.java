@@ -43,8 +43,26 @@ public class FracCalc {
         
         Fraction frac1 = new Fraction(operand1);
         Fraction frac2 = new Fraction(operand2);
+        frac1.toImproper();
+        frac2.toImproper();
         
-        return "" + frac2;
+        Fraction answer = new Fraction();
+        if(operator.equals("+")) {
+        	answer = frac1.add(frac2);
+        }else if(operator.equals("-")) {//subtraction is negative addition
+        	frac2.setNumerator(frac2.getNumerator() * -1);
+        	answer = frac1.add(frac2);
+        }else if(operator.equals("*")) {
+        	answer = frac1.multiply(frac2);
+        }else if(operator.equals("/")) {//division is multiplying by reciprocal
+        	int temp = frac2.getNumerator();
+        	frac2.setNumerator(frac2.getDenominator());
+        	frac2.setDenominator(temp);
+        	answer = frac1.multiply(frac2);
+        }
+        answer.simplify();
+        
+        return "" + answer;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need

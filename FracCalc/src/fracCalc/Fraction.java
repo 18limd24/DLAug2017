@@ -49,16 +49,28 @@ public class Fraction {
 		this.numerator = numerator;
 		this.denominator = denominator;
 	}
+	public Fraction() {
+		this.whole = 0;
+		this.numerator = 0;
+		this.denominator = 1;
+	}
 	public void toMixedNumber() {
 		//updates whole and numerator
 		this.whole = this.numerator / this.denominator;
-		this.numerator = this.whole % this.denominator;
-		
+		if(this.numerator > 0 || (this.numerator < 0 && this.denominator < 0)) {
+			this.numerator = this.numerator % this.denominator;
+		}else {
+			this.numerator = Math.abs(this.numerator % this.denominator); 
+		}
 	}
 	public void toImproper() {
 		//update whole to 0
 		//update numerator
+		if(this.whole < 0) {
+			this.numerator = (Math.abs(this.whole * this.denominator) + this.numerator) * -1; 
+		}else {
 		this.numerator = (this.whole * this.denominator) + this.numerator;
+		}
 		this.whole = 0;
 	}
 	private int toInt(String str) {
@@ -66,14 +78,40 @@ public class Fraction {
 		return Integer.parseInt(str);
 	}
 	public void simplify() {
+		this.toImproper();
 		int gcf = gcf(Math.abs(this.numerator), Math.abs(this.denominator));
 		this.numerator /= gcf;
 		this.denominator /= gcf;
+		if(this.denominator < 0 && this.numerator >= 0) {
+			this.denominator *= -1;
+			this.numerator *= -1;
+		}
+		this.toMixedNumber();
+		
 	}
 	public String toString() {
 		//creates string to be printed out
 		//return this.whole + "_" + this.numerator + "/" + this.denominator; for after checkpoint2
-		return "whole:" + this.whole + " numerator:" + this.numerator + " denominator:" + this.denominator;
+		/*if(this.whole == 0 && this.numerator == 0) {
+			return "" + 0;
+		}else if(this.whole == 0 && this.numerator != 0) {
+			return this.numerator + "/" + this.denominator;
+		}else {
+		return this.whole + "_" + this.numerator + "/" + this.denominator;
+		}*/
+		if(this.whole == 0 && this.numerator == 0) {//if equivalent to 0
+	    	   return "0";
+	       }else if(this.whole == 0 && this.numerator != 0) {//if whole is 0 then only fraction
+	    	   if(this.denominator < 0) {//if denominator is negative, return absValue and multiply numerator by -1
+	    		   return -this.numerator + "/" + Math.abs(this.denominator);
+	    	   }else {
+	    		   return this.numerator + "/" + this.denominator;
+	    	   }
+	       }else if(this.whole != 0 && this.numerator == 0) {//if only whole number
+	    	   return "" + this.whole;
+	       }else {//if the whole thing
+	    	   return this.whole + "_" + Math.abs(this.numerator) + "/" + Math.abs(this.denominator);
+	       }
 	}
 	private int gcf(int greaterN, int lesserN) {
 		int a = greaterN;
@@ -112,6 +150,21 @@ public class Fraction {
 		return answer;
 	}
 	public Fraction add(Fraction frac2) {
-		Fraction answer = new Fraction()
+		Fraction answer = new Fraction();
+		this.toImproper();
+		frac2.toImproper();
+		commonDenom(this, frac2);
+		answer.setNumerator(this.getNumerator() + frac2.getNumerator());
+		answer.setDenominator(this.getDenominator());
+		answer.simplify();
+		return answer;
+	}
+	public static void commonDenom(Fraction frac1, Fraction frac2) {
+		frac1.setNumerator(frac1.getNumerator() * frac2.getDenominator());
+		int temp = frac1.getDenominator();
+		frac1.setDenominator(frac1.getDenominator() * frac2.getDenominator());
+		
+		frac2.setNumerator(frac2.getNumerator() * temp);
+		frac2.setDenominator(frac2.getDenominator() * temp);
 	}
 }
