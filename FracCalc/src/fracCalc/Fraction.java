@@ -91,14 +91,7 @@ public class Fraction {
 	}
 	public String toString() {
 		//creates string to be printed out
-		//return this.whole + "_" + this.numerator + "/" + this.denominator; for after checkpoint2
-		/*if(this.whole == 0 && this.numerator == 0) {
-			return "" + 0;
-		}else if(this.whole == 0 && this.numerator != 0) {
-			return this.numerator + "/" + this.denominator;
-		}else {
-		return this.whole + "_" + this.numerator + "/" + this.denominator;
-		}*/
+		
 		if(this.whole == 0 && this.numerator == 0) {//if equivalent to 0
 	    	   return "0";
 	       }else if(this.whole == 0 && this.numerator != 0) {//if whole is 0 then only fraction
