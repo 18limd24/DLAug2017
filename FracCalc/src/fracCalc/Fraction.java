@@ -8,10 +8,9 @@ public class Fraction {
 	private int whole;
 	private int numerator;
 	private int denominator;
-	//private String wholeAsAString;
-	//private String numAsAString;
-	//private String denomAsAString;
-	public Fraction(String operand) {
+
+	//constructor that takes string
+	public Fraction(String operand) { 
 		String whole = "";
 		String numerator = "";
 		String denominator = "";
@@ -39,28 +38,37 @@ public class Fraction {
 		this.numerator = toInt(answer[1]);
 		this.denominator = toInt(answer[2]);
 	}
+	//constructor that takes mixed number
 	public Fraction(int whole, int numerator, int denominator) {
 		this.whole = whole;
 		this.numerator = numerator;
 		this.denominator = denominator;
 	}
+	//constructor that takes improper or just fraction
 	public Fraction(int numerator, int denominator) {
 		this.whole = 0;
 		this.numerator = numerator;
 		this.denominator = denominator;
 	}
+	//constructor that takes nothing
 	public Fraction() {
 		this.whole = 0;
 		this.numerator = 0;
 		this.denominator = 1;
+	}
+	//constructor that will copy another fraction
+	public Fraction(Fraction f) {
+		this(f.getWhole(),f.getNumerator(), f.getDenominator());
 	}
 	public void toMixedNumber() {
 		//updates whole and numerator
 		this.whole = this.numerator / this.denominator;
 		if(this.numerator > 0 || (this.numerator < 0 && this.denominator < 0)) {
 			this.numerator = this.numerator % this.denominator;
+		}else if(this.whole == 0 && this.numerator < 0) {
+			this.numerator = this.numerator % this.denominator; 
 		}else {
-			this.numerator = Math.abs(this.numerator % this.denominator); 
+			this.numerator = Math.abs(this.numerator % this.denominator);
 		}
 	}
 	public void toImproper() {
