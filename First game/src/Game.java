@@ -6,6 +6,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 //Canvas is the blank rectangular area to be painted over
 //and to trap inputs
 
@@ -21,11 +22,31 @@ public class Game extends Canvas implements Runnable{
 	//multiple threads of execution running concurrently.
 	private boolean running = false;
 	
+	private Random r;//random
+	private Handler handler;
+	
 	public Game() {
+		handler = new Handler();
+		//should create handler before window
+		
+		this.addKeyListener(new KeyInput(handler));
+		
 		new Window(WIDTH, HEIGHT, "Let's Build A Game!!", this);
 		/* synchronized is all about different threads reading and writing
 		*to the same variables, objects and resources
 		*/
+		
+		
+		
+		r = new Random();
+		//should initialize in constructors 
+		
+		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player));//initialized at center
+		handler.addObject(new Player(WIDTH/2 +64, HEIGHT/2 -32, ID.Player2));
+		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 +64, ID.Enemy));
+		//takes the handler and adds an object at that position and that is constructed
+
+		
 	}
 	
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
@@ -76,7 +97,7 @@ public class Game extends Canvas implements Runnable{
 		stop();
 	}
 	private void tick() {
-		
+		handler.tick();
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -90,8 +111,12 @@ public class Game extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
+		handler.render(g);
+		
 		g.dispose();
 		bs.show();
+		
+		
 	}
 	
 	public static void main(String[] args) {
