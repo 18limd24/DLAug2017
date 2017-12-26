@@ -17,6 +17,7 @@ public abstract class GameObject {
 	//tick method to update 
 	public abstract void tick();
 	public abstract void render(Graphics g);
+	public abstract void Rectangle();
 
 	public int getX() {
 		return x;

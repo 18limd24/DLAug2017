@@ -24,19 +24,9 @@ public class KeyInput extends KeyAdapter{
 				if(key ==  KeyEvent.VK_A) tempObject.setSpeedX(-5);
 				if(key ==  KeyEvent.VK_D) tempObject.setSpeedX(5);
 			}
-			if(tempObject.getID() == ID.Player2) {//looks at id
-				if(key ==  KeyEvent.VK_UP) tempObject.setSpeedY(-5);//can do one line
-				if(key ==  KeyEvent.VK_DOWN) tempObject.setSpeedY(5);
-				if(key ==  KeyEvent.VK_LEFT) tempObject.setSpeedX(-5);
-				if(key ==  KeyEvent.VK_RIGHT) tempObject.setSpeedX(5);
-			}
-			if(tempObject.getID() == ID.Enemy) {
-				if(key == KeyEvent.VK_SPACE) tempObject.setSpeedY(3);
-				if(key == KeyEvent.VK_B) tempObject.setSpeedY(-3);
-				if(key == KeyEvent.VK_N) tempObject.setSpeedX(3);
-				if(key == KeyEvent.VK_V) tempObject.setSpeedX(-3);
-			}
 		}
+		
+		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
 		
 	}
 	public void keyReleased(KeyEvent e) {
@@ -51,18 +41,6 @@ public class KeyInput extends KeyAdapter{
 				if(key ==  KeyEvent.VK_S) tempObject.setSpeedY(0);
 				if(key ==  KeyEvent.VK_A) tempObject.setSpeedX(0);
 				if(key ==  KeyEvent.VK_D) tempObject.setSpeedX(0);
-			}
-			if(tempObject.getID() == ID.Player2) {//looks at id
-				if(key ==  KeyEvent.VK_UP) tempObject.setSpeedY(0);//can do one line
-				if(key ==  KeyEvent.VK_DOWN) tempObject.setSpeedY(0);
-				if(key ==  KeyEvent.VK_LEFT) tempObject.setSpeedX(0);
-				if(key ==  KeyEvent.VK_RIGHT) tempObject.setSpeedX(0);
-			}
-			if(tempObject.getID() == ID.Enemy) {
-				if(key == KeyEvent.VK_SPACE) tempObject.setSpeedY(0);
-				if(key == KeyEvent.VK_B) tempObject.setSpeedY(0);
-				if(key == KeyEvent.VK_N) tempObject.setSpeedX(0);
-				if(key == KeyEvent.VK_V) tempObject.setSpeedX(0);
 			}
 		}
 	}

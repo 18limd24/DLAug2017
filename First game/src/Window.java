@@ -30,6 +30,7 @@ public class Window extends Canvas{
 		//so it shows up in middle of screen
 		
 		frame.add(game);
+		game.requestFocus();
 		frame.setVisible(true);
 		//duh
 		game.start();

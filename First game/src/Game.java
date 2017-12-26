@@ -25,6 +25,8 @@ public class Game extends Canvas implements Runnable{
 	private Random r;//random
 	private Handler handler;
 	
+	private HUD hud;
+	
 	public Game() {
 		handler = new Handler();
 		//should create handler before window
@@ -42,11 +44,10 @@ public class Game extends Canvas implements Runnable{
 		//should initialize in constructors 
 		
 		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player));//initialized at center
-		handler.addObject(new Player(WIDTH/2 +64, HEIGHT/2 -32, ID.Player2));
-		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 +64, ID.Enemy));
+		handler.addObject(new Enemy1(WIDTH/2 -32, HEIGHT/2 -32, ID.Enemy1));//initialized at center
 		//takes the handler and adds an object at that position and that is constructed
 
-		
+		hud = new HUD();
 	}
 	
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
@@ -69,6 +70,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void run() {
+		this.requestFocus();
 		//game loop
 		long lastTime = System.nanoTime();//returns time in nanoseconds
 		double amountOfTicks = 60.0;
@@ -98,6 +100,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	private void tick() {
 		handler.tick();
+		hud.tick();
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -113,10 +116,22 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
+		hud.render(g);
+		
 		g.dispose();
 		bs.show();
 		
 		
+	}
+	public static int clamp(int var, int max, int min) {//if we see var go past max, return max, 
+														//so it never can, same w min
+		if(var >= max) {
+			return var = max;
+		}else if (var <= min) {
+			return var = min;
+		}else {
+			return var;
+		}
 	}
 	
 	public static void main(String[] args) {
