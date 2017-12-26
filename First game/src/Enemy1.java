@@ -1,11 +1,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Enemy1 extends GameObject{
 
-	public Enemy1(int x, int y, ID id) {
+	public Enemy1(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		
+		this.handler = handler;
 		
 		speedX = 5;
 		speedY = 5;
@@ -25,6 +26,10 @@ public class Enemy1 extends GameObject{
 			g.fillRect(x, y, 16, 16);
 		}
 		
+	}
+
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 16, 16);
 	}
 
 }

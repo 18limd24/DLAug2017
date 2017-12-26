@@ -8,7 +8,6 @@ public class HUD {
 	
 	
 	public void tick() {
-		health --;
 		
 		health = Game.clamp(health, 100, 0);//don't forget to set equal to health
 	}

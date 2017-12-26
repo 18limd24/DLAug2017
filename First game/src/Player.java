@@ -1,13 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 //this is an enumeration of our game objects
 public class Player extends GameObject{
 	
-	public Player(int x, int y, ID id) {
+	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);//idk what super is yet
-		
+		this.handler = handler;
 		//Random r = new Random();
 		
 
@@ -21,6 +22,13 @@ public class Player extends GameObject{
 		x = Game.clamp(x, Game.WIDTH - 38, 0);
 		y = Game.clamp(y, Game.HEIGHT - 60, 0);
 		
+		collision();
+		
+	}
+	private void collision() {
+		for(int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = 
+		}
 	}
 	public void render(Graphics g) {
 		if(id == ID.Player) {
@@ -29,9 +37,8 @@ public class Player extends GameObject{
 		}
 	}
 
-	public void Rectangle() {
-		return new Rectangle(x, y, )
-		
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 32, 32);//sets bounds to same as the player
 	}
 	
 	

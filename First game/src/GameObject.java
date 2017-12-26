@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 //This will be class for all objects(like enemies and players)
 public abstract class GameObject {
@@ -6,6 +7,7 @@ public abstract class GameObject {
 	protected int x, y; //position
 	protected ID id;
 	protected int speedX, speedY;
+	protected Handler handler;
 	
 	//Constructor
 	public GameObject(int x, int y, ID id) {
@@ -17,7 +19,7 @@ public abstract class GameObject {
 	//tick method to update 
 	public abstract void tick();
 	public abstract void render(Graphics g);
-	public abstract void Rectangle();
+	public abstract Rectangle getBounds();
 
 	public int getX() {
 		return x;

@@ -19,6 +19,7 @@ public class Handler {
 			GameObject tempObject = object.get(i);
 			
 			tempObject.tick();//run through all objects and update them
+			
 		}
 	}
 	public void render(Graphics g) {
