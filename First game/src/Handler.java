@@ -17,6 +17,7 @@ public class Handler {
 	public void tick() {
 		for(int i = 0; i< object.size(); i++) {
 			GameObject tempObject = object.get(i);
+			//same object, new reference
 			
 			tempObject.tick();//run through all objects and update them
 			

@@ -27,7 +27,15 @@ public class Player extends GameObject{
 	}
 	private void collision() {
 		for(int i = 0; i < handler.object.size(); i++) {
-			GameObject tempObject = 
+			GameObject tempObject = handler.object.get(i);
+			
+			if(tempObject.getID() == ID.Enemy1) {
+				if(getBounds().intersects(tempObject.getBounds())){
+					//if the tempObject is the enemy and if it is intersecting the player
+					HUD.health -= 2;
+					
+				}
+			}
 		}
 	}
 	public void render(Graphics g) {

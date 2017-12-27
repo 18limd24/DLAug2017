@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable{
 		//should initialize in constructors 
 		
 		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player, handler));//initialized at center
-		handler.addObject(new Enemy1(WIDTH/2 -32, HEIGHT/2 -32, ID.Enemy1, handler));//initialized at center
+		handler.addObject(new Enemy1(0, 0, ID.Enemy1, handler));//initialized at center
 		//takes the handler and adds an object at that position and that is constructed
 
 		hud = new HUD();
