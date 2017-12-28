@@ -6,6 +6,8 @@ import java.util.Random;
 //this is an enumeration of our game objects
 public class Player extends GameObject{
 	
+	private Handler handler;
+	
 	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);//idk what super is yet
 		this.handler = handler;
@@ -24,6 +26,7 @@ public class Player extends GameObject{
 		
 		collision();
 		
+		//handler.addObject(new Trail( x, y, ID.Trail, Color.white, 32, 32, 0.1f, handler));
 	}
 	private void collision() {
 		for(int i = 0; i < handler.object.size(); i++) {
