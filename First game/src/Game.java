@@ -26,6 +26,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler handler;
 	
 	private HUD hud;
+	private Spawn spawn;
 	
 	public Game() {
 		handler = new Handler();
@@ -37,20 +38,18 @@ public class Game extends Canvas implements Runnable{
 		/* synchronized is all about different threads reading and writing
 		*to the same variables, objects and resources
 		*/
-		
+		hud = new HUD();
+		spawn = new Spawn(handler, hud);
 		
 		
 		r = new Random();
 		//should initialize in constructors 
 		
 		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player, handler));//initialized at center
-		handler.addObject(new Enemy1(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy1, handler));
-		handler.addObject(new Enemy1(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy1, handler));
-		handler.addObject(new Enemy1(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy1, handler));
-		handler.addObject(new Enemy1(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy1, handler));
+		handler.addObject(new Enemy1(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.Enemy1, handler));
 		//takes the handler and adds an object at that position and that is constructed
 
-		hud = new HUD();
+		
 	}
 	
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
@@ -104,6 +103,10 @@ public class Game extends Canvas implements Runnable{
 	private void tick() {
 		handler.tick();
 		hud.tick();
+		spawn.tick();
+		//if(hud.health == 0) {
+		//	stop();
+		//}
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();

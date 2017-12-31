@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 //abstract class, will be the stuff all objects need to know
 public abstract class GameObject {
@@ -51,6 +52,9 @@ public abstract class GameObject {
 	}
 	public void setHandler(Handler handler) {
 		this.handler = handler;
+	}
+	public Rectangle getBounds() {
+		return new Rectangle();
 	}
 	
 	

@@ -3,7 +3,8 @@ public enum ID {
 	
 	Player(),
 	Enemy1(),
-	Trail();
+	Trail(),
+	SpeedUp();
 	
 
 }

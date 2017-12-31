@@ -8,6 +8,7 @@ public abstract class GameObject {
 	protected ID id;
 	protected int speedX, speedY;
 	protected Handler handler;
+	protected int speedUps = 0;
 	
 	//Constructor
 	public GameObject(int x, int y, ID id) {
@@ -50,6 +51,12 @@ public abstract class GameObject {
 	}
 	public void setSpeedY(int speedY) {
 		this.speedY = speedY;
+	}
+	public int getSpeedUps() {
+		return speedUps;
+	}
+	public void setSpeedUps(int speedUps) {
+		this.speedUps = speedUps;
 	}
 //that should be it for gameObject
 }

@@ -1,6 +1,6 @@
 
 public enum ID {
 	Player(),
-	Enemy1();
+	Car();
 
 }

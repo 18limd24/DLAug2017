@@ -19,10 +19,10 @@ public class KeyInput extends KeyAdapter{
 			GameObject tempObject = handler.object.get(i);//finds the object and gives it name
 			
 			if(tempObject.getID() == ID.Player) {//looks at id
-				if(key ==  KeyEvent.VK_W) tempObject.setSpeedY(-5);//can do one line
-				if(key ==  KeyEvent.VK_S) tempObject.setSpeedY(5);
-				if(key ==  KeyEvent.VK_A) tempObject.setSpeedX(-5);
-				if(key ==  KeyEvent.VK_D) tempObject.setSpeedX(5);
+				if(key ==  KeyEvent.VK_W) tempObject.setSpeedY(-5 - tempObject.speedUps);//can do one line
+				if(key ==  KeyEvent.VK_S) tempObject.setSpeedY(5 + tempObject.speedUps);
+				if(key ==  KeyEvent.VK_A) tempObject.setSpeedX(-5 - tempObject.speedUps);
+				if(key ==  KeyEvent.VK_D) tempObject.setSpeedX(5 + tempObject.speedUps);
 			}
 		}
 		

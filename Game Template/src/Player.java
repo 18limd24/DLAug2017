@@ -14,6 +14,17 @@ public class Player extends GameObject{
 		x = Game.clamp(x, Game.WIDTH - 38, 0);
 		y = Game.clamp(y, Game.HEIGHT - 60, 0);
 		
+		collision();
+	}
+	public void collision() {
+		for(int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = handler.object.get(i);
+			if(tempObject.getId() == ID.Player) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					
+				}
+			}
+		}
 	}
 
 	public void render(Graphics g) {
@@ -22,7 +33,7 @@ public class Player extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,32	,32);
+		return new Rectangle(x, y,32,32);
 	}
 
 }

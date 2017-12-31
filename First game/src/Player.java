@@ -8,9 +8,11 @@ public class Player extends GameObject{
 	
 	private Handler handler;
 	
+	
 	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);//idk what super is yet
 		this.handler = handler;
+		this.speedUps = 0;
 		//Random r = new Random();
 		
 
@@ -37,6 +39,12 @@ public class Player extends GameObject{
 					//if the tempObject is the enemy and if it is intersecting the player
 					HUD.health -= 2;
 					
+				}
+			}
+			if(tempObject.getID() == ID.SpeedUp) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					this.speedUps ++;
+					handler.removeObject(tempObject);
 				}
 			}
 		}

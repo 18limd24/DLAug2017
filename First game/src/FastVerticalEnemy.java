@@ -2,16 +2,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Enemy1 extends GameObject{
+public class FastVerticalEnemy extends GameObject{
 	
 	private Handler handler;
 
-	public Enemy1(int x, int y, ID id, Handler handler) {
+	public FastVerticalEnemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		
-		speedX = 5;
-		speedY = 5;
+		speedX = 0;
+		speedY = 10;
 	}
 
 	public void tick() {
@@ -20,7 +20,7 @@ public class Enemy1 extends GameObject{
 		if(x <= 0 || x >= Game.WIDTH - 32) speedX *= -1;//changes direction if reaches sides
 		if(y <= 0 || y >= Game.HEIGHT - 32) speedY *= -1;
 		
-		handler.addObject(new Trail(x, y, ID.Trail, Color.red, 16, 16, 0.03f, handler));
+		handler.addObject(new Trail(x, y, ID.Trail, Color.white, 16, 16, 0.05f, handler));
 		
 		//collision();
 		
@@ -42,7 +42,7 @@ public class Enemy1 extends GameObject{
 
 	public void render(Graphics g) {
 		if(id == ID.Enemy1) {
-			g.setColor(Color.red);
+			g.setColor(Color.white);
 			g.fillRect(x, y, 16, 16);
 		}
 		
