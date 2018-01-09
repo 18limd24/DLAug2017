@@ -19,16 +19,26 @@ public class Game extends Canvas implements Runnable{
 	
 	private Handler handler;
 	private HUD hud;
+	public static int SPEED = 1;
+	private static Background background1 = new Background(0, SPEED);
+	private static Background background2 = new Background(HEIGHT, SPEED);
+	
+	private Road road = new Road(background1, handler);
 	
 	public Game() {
 		handler = new Handler();
-		this.addKeyListener(new KeyInput(handler));
-		title = "Frogger/Crossy Road";
-		new Window(WIDTH, HEIGHT, title, this);
 		
-		handler.addObject(new Player(WIDTH/2 -32, HEIGHT, ID.Player, handler));
+		title = "Frogger/Crossy Road";
 		
 		hud = new HUD();
+		
+		
+		handler.addObject(new Player(WIDTH/2 -32, HEIGHT - 60, ID.Player, handler));
+		handler.addObject(new Car(WIDTH, HEIGHT - 310, ID.Car, handler));
+		
+		this.addKeyListener(new KeyInput(handler));
+		
+		new Window(WIDTH, HEIGHT, title, this);
 	}
 
 
@@ -66,6 +76,17 @@ public class Game extends Canvas implements Runnable{
 	public void tick() {
 		handler.tick();
 		hud.tick();
+		background1.tick();
+		background2.tick();
+		road.tick();
+		/*for(int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = handler.object.get(i);
+			if(tempObject.getId() == ID.Player) {
+				if(tempObject.getY() == HEIGHT - 60) {
+					stop();
+				}
+			}
+		}*/
 	}
 	
 	public static int clamp(int var, int max, int min) {
@@ -88,9 +109,14 @@ public class Game extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		background1.render(g);
+		background2.render(g);
+		
+		road.render(g);
 		
 		handler.render(g);
 		hud.render(g);
+
 		
 		g.dispose();
 		bs.show();
