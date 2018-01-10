@@ -24,6 +24,7 @@ public class Game extends Canvas implements Runnable{
 	private static Background background2 = new Background(HEIGHT, SPEED);
 	
 	private Road road = new Road(background1, handler);
+	private Road road1 = new Road(background2, handler);
 	
 	public Game() {
 		handler = new Handler();
@@ -34,7 +35,6 @@ public class Game extends Canvas implements Runnable{
 		
 		
 		handler.addObject(new Player(WIDTH/2 -32, HEIGHT - 60, ID.Player, handler));
-		handler.addObject(new Car(WIDTH, HEIGHT - 310, ID.Car, handler));
 		
 		this.addKeyListener(new KeyInput(handler));
 		
@@ -79,6 +79,7 @@ public class Game extends Canvas implements Runnable{
 		background1.tick();
 		background2.tick();
 		road.tick();
+		road1.tick();
 		/*for(int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			if(tempObject.getId() == ID.Player) {
@@ -113,6 +114,7 @@ public class Game extends Canvas implements Runnable{
 		background2.render(g);
 		
 		road.render(g);
+		road1.render(g);
 		
 		handler.render(g);
 		hud.render(g);

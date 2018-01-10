@@ -13,7 +13,7 @@ public class Road {
 		this.b = b;
 		this.y = b.getY();
 		this.handler = handler;
-		car = new Car(Game.WIDTH, y - 40, ID.Car, handler);
+		car = new Car(Game.WIDTH, y + height - 40, ID.Car, handler);
 	}
 	public void setY(int y) {
 		this.y = y;
@@ -22,9 +22,12 @@ public class Road {
 		return this.y;
 	}
 	public void tick() {
-		this.y = b.getY() - height;
+		this.y = b.getY();// - height/2;
+		if(this.y == (Game.WIDTH % Game.SPEED) - height/2) {
+			car = new Car(Game.WIDTH, this.y + height - 40, ID.Car, handler);
+		}
 		car.tick();
-		if(car.getX() == 0 - car.carWidth) {
+		if(car.getX() == 0 - car.getCarWidth()) {
 			car.setX(Game.WIDTH);
 		}
 	}
@@ -32,7 +35,7 @@ public class Road {
 		g.setColor(Color.gray);
 		g.fillRect(0, y, Game.WIDTH, height);//what do I set x to? not showing up
 		g.setColor(Color.WHITE);
-		g.drawRect(0, y, Game.WIDTH, height);
+		g.drawRect(-1, y, Game.WIDTH + 2, height);
 		g.setColor(Color.yellow);
 		for(int i = 0; i < Game.WIDTH; i += gap + 30) {
 			g.fillRect(i, y + 20, 30, 10);
