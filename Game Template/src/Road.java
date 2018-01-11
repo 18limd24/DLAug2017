@@ -15,6 +15,12 @@ public class Road {
 		this.handler = handler;
 		car = new Car(Game.WIDTH, y + height - 40, ID.Car, handler);
 	}
+	public Road(Background b,int y, Handler handler) {
+		this.b = b;
+		this.y = b.getY() - y;
+		this.handler = handler;
+		car = new Car(Game.WIDTH, this.y + height - 40, ID.Car, handler);
+	}
 	public void setY(int y) {
 		this.y = y;
 	}
@@ -24,7 +30,7 @@ public class Road {
 	public void tick() {
 		this.y = b.getY();// - height/2;
 		if(this.y == (Game.WIDTH % Game.SPEED) - height/2) {
-			car = new Car(Game.WIDTH, this.y + height - 40, ID.Car, handler);
+			car = new Car(car.getX(), this.y + height - 40, ID.Car, handler);
 		}
 		car.tick();
 		if(car.getX() == 0 - car.getCarWidth()) {
