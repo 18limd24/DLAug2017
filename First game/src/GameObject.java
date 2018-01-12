@@ -4,14 +4,14 @@ import java.awt.Rectangle;
 //This will be class for all objects(like enemies and players)
 public abstract class GameObject {
 	
-	protected int x, y; //position
+	protected float x, y; //position
 	protected ID id;
-	protected int speedX, speedY;
+	protected float speedX, speedY;
 	protected Handler handler;
 	protected int speedUps = 0;
 	
 	//Constructor
-	public GameObject(int x, int y, ID id) {
+	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
@@ -22,16 +22,16 @@ public abstract class GameObject {
 	public abstract void render(Graphics g);
 	public abstract Rectangle getBounds();
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
-	public int getY() {
+	public float getY() {
 		return this.y;
 	}
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	public ID getID() {
@@ -40,16 +40,16 @@ public abstract class GameObject {
 	public void setID(ID id) {
 		this.id = id;
 	}
-	public int getSpeedX() {
+	public float getSpeedX() {
 		return this.speedX;
 	}
-	public void setSpeedX(int speedX) {
+	public void setSpeedX(float speedX) {
 		this.speedX = speedX;
 	}
-	public int getSpeedY() {
+	public float getSpeedY() {
 		return this.speedY;
 	}
-	public void setSpeedY(int speedY) {
+	public void setSpeedY(float speedY) {
 		this.speedY = speedY;
 	}
 	public int getSpeedUps() {

@@ -19,7 +19,7 @@ public class Road {
 		this.b = b;
 		this.y = b.getY() - y;
 		this.handler = handler;
-		car = new Car(Game.WIDTH, this.y + height - 40, ID.Car, handler);
+		car = new Car(Game.WIDTH, y + height - 40, ID.Car, handler);
 	}
 	public void setY(int y) {
 		this.y = y;

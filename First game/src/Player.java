@@ -9,7 +9,7 @@ public class Player extends GameObject{
 	private Handler handler;
 	
 	
-	public Player(int x, int y, ID id, Handler handler) {
+	public Player(float x, float y, ID id, Handler handler) {
 		super(x, y, id);//idk what super is yet
 		this.handler = handler;
 		this.speedUps = 0;
