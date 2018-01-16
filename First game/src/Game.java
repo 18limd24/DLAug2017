@@ -129,7 +129,7 @@ public class Game extends Canvas implements Runnable{
 		
 		
 	}
-	public static int clamp(int var, int max, int min) {//if we see var go past max, return max, 
+	public static float clamp(float var, float max, float min) {//if we see var go past max, return max, 
 														//so it never can, same w min
 		if(var >= max) {
 			return var = max;

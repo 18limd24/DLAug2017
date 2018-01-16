@@ -3,6 +3,7 @@ public enum ID {
 	
 	Player(),
 	Enemy1(),
+	SmartEnemy(),
 	Trail(),
 	SpeedUp();
 	
