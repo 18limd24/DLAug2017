@@ -25,10 +25,10 @@ public class KeyInput extends KeyAdapter{
 			GameObject tempObject = handler.object.get(i);//finds the object and gives it name
 
 			if (tempObject.getId() == ID.Player) {// looks at id
-				if(key ==  KeyEvent.VK_W) tempObject.setY(tempObject.getY() - Game.HEIGHT/(Game.HEIGHT/50));//can do one line
-				if(key ==  KeyEvent.VK_S) tempObject.setY(tempObject.getY() + Game.HEIGHT/(Game.HEIGHT/50));
-				if(key ==  KeyEvent.VK_A) tempObject.setX(tempObject.getX() - Game.HEIGHT/(Game.HEIGHT/50));
-				if(key ==  KeyEvent.VK_D) tempObject.setX(tempObject.getX() + Game.HEIGHT/(Game.HEIGHT/50));
+				if(key ==  KeyEvent.VK_W) tempObject.setY(tempObject.getY() - 50);//can do one line
+				if(key ==  KeyEvent.VK_S) tempObject.setY(tempObject.getY() + 50);
+				if(key ==  KeyEvent.VK_A) tempObject.setX(tempObject.getX() - 50);
+				if(key ==  KeyEvent.VK_D) tempObject.setX(tempObject.getX() + 50);
 			}
 		}
 	}
