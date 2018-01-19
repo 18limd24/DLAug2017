@@ -6,6 +6,7 @@ public class HUD{
 	private int score = 0;
 	
 	public void tick() {
+
 		
 	}
 	public void render(Graphics g) {
