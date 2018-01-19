@@ -41,6 +41,13 @@ public class Player extends GameObject{
 					
 				}
 			}
+			if(tempObject.getID() == ID.SmartEnemy) {
+				if(getBounds().intersects(tempObject.getBounds())){
+					//if the tempObject is the enemy and if it is intersecting the player
+					HUD.health -= 1;
+					
+				}
+			}
 			if(tempObject.getID() == ID.SpeedUp) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					this.speedUps ++;

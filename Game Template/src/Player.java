@@ -17,12 +17,18 @@ public class Player extends GameObject{
 		
 		//collision();
 	}
-	public void collision() {
+	private void collision() {
 		for(int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
+			
 			if(tempObject.getId() == ID.Car) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					this.hit = true;
+				}
+			}
+			if(tempObject.getId() == ID.Log) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					speedX = 2;
 				}
 			}
 		}

@@ -4,7 +4,7 @@ import java.awt.Graphics;
 //this is heads up display
 public class HUD {
 	
-	public static int health = 100;
+	public static float health = 100;
 	private int greenValue = 255;
 	private int score = 0;
 	private int level = 1;
@@ -14,8 +14,8 @@ public class HUD {
 		
 		health = Game.clamp(health, 100, 0);//don't forget to set equal to health
 		
-		greenValue = Game.clamp(greenValue, 255, 0);
-		greenValue = health *2;
+		greenValue = (int)Game.clamp(greenValue, 255, 0);
+		greenValue = (int)health *2;
 		
 		score++;
 		
@@ -24,7 +24,7 @@ public class HUD {
 		g.setColor(Color.gray);
 		g.fillRect(16, 16, 200, 16);//total health
 		g.setColor(new Color(75, greenValue, 0));
-		g.fillRect(16, 16, health * 2, 16);//displays health
+		g.fillRect(16, 16, (int)(health * 2), 16);//displays health
 		g.setColor(Color.white);
 		g.drawRect(16, 16, 200, 16);//outline
 		

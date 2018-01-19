@@ -47,6 +47,8 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player, handler));//initialized at center
 		handler.addObject(new Enemy1(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.Enemy1, handler));
+		handler.addObject(new SmartEnemy(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.SmartEnemy, handler));
+
 		//takes the handler and adds an object at that position and that is constructed
 
 		

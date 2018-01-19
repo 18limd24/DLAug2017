@@ -25,6 +25,8 @@ public class Game extends Canvas implements Runnable{
 	
 	private Road road = new Road(background1, handler);
 	private Road road1 = new Road(background2, handler);
+	private River river1 = new River(background1, handler);
+	private River river2 = new River(background2, handler);
 	//private Road road2 = new Road(background1, 150, handler);
 	
 	public Game() {
@@ -81,6 +83,8 @@ public class Game extends Canvas implements Runnable{
 		background2.tick();
 		road.tick();
 		road1.tick();
+		river1.tick();
+		river2.tick();
 		//road2.tick();
 		/*for(int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
@@ -117,6 +121,8 @@ public class Game extends Canvas implements Runnable{
 		
 		road.render(g);
 		road1.render(g);
+		river1.render(g);
+		river2.render(g);
 		//road2.render(g);
 		handler.render(g);
 		hud.render(g);

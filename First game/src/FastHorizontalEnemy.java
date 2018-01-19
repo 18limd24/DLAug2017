@@ -20,7 +20,7 @@ public class FastHorizontalEnemy extends GameObject{
 		if(x <= 0 || x >= Game.WIDTH - 32) speedX *= -1;//changes direction if reaches sides
 		if(y <= 0 || y >= Game.HEIGHT - 32) speedY *= -1;
 		
-		handler.addObject(new Trail(x, y, ID.Trail, Color.white, 16, 16, 0.05f, handler));
+		handler.addObject(new Trail((int)x,(int) y, ID.Trail, Color.white, 16, 16, 0.05f, handler));
 		
 		//collision();
 		
@@ -43,13 +43,13 @@ public class FastHorizontalEnemy extends GameObject{
 	public void render(Graphics g) {
 		if(id == ID.Enemy1) {
 			g.setColor(Color.white);
-			g.fillRect(x, y, 16, 16);
+			g.fillRect((int)x, (int)y, 16, 16);
 		}
 		
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 16, 16);
+		return new Rectangle((int)x, (int)y, 16, 16);
 	}
 
 }

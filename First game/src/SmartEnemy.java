@@ -23,13 +23,13 @@ public class SmartEnemy extends GameObject{
 		float diffY = y - player.getY();
 		float difference = (float) Math.sqrt((x-player.getX())*(x-player.getX()) + (y-player.getY())*(y-player.getY()));
 		
-		speedX = (int) (-1.0/difference)*(diffX);
-		speedY = (int) (-1.0/difference)*(diffY);
+		speedX = (-1/difference)*(diffX);
+		speedY = (-1/difference)*(diffY);
 		
 		if(x <= 0 || x >= Game.WIDTH - 32) speedX *= -1;//changes direction if reaches sides
 		if(y <= 0 || y >= Game.HEIGHT - 32) speedY *= -1;
 		
-		handler.addObject(new Trail(x, y, ID.Trail, Color.green, 16, 16, 0.03f, handler));
+		handler.addObject(new Trail((int)x, (int)y, ID.Trail, Color.green, 8, 8, 0.03f, handler));
 		
 		//collision();
 		
@@ -52,13 +52,13 @@ public class SmartEnemy extends GameObject{
 	public void render(Graphics g) {
 		if(id == ID.SmartEnemy) {
 			g.setColor(Color.green);
-			g.fillRect(x, y, 16, 16);
+			g.fillRect((int)x, (int)y, 8, 8);
 		}
 		
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 16, 16);
+		return new Rectangle((int)x, (int)y, 16, 16);
 	}
 
 }

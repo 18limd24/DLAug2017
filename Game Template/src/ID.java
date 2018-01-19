@@ -1,6 +1,7 @@
 
 public enum ID {
 	Player(),
-	Car();
+	Car(),
+	Log();
 
 }
