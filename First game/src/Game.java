@@ -27,12 +27,17 @@ public class Game extends Canvas implements Runnable{
 	
 	private HUD hud;
 	private Spawn spawn;
+	private Menu menu;
+	
+	public STATE gameState = STATE.Menu;
 	
 	public Game() {
 		handler = new Handler();
 		//should create handler before window
+		menu = new Menu(this, handler);
 		
 		this.addKeyListener(new KeyInput(handler));
+		this.addMouseListener(menu);
 		
 		new Window(WIDTH, HEIGHT, "Let's Build A Game!!", this);
 		/* synchronized is all about different threads reading and writing
@@ -42,13 +47,14 @@ public class Game extends Canvas implements Runnable{
 		spawn = new Spawn(handler, hud);
 		
 		
+		
 		r = new Random();
 		//should initialize in constructors 
-		
-		handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player, handler));//initialized at center
-		handler.addObject(new Enemy1(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.Enemy1, handler));
-		handler.addObject(new SmartEnemy(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.SmartEnemy, handler));
-
+		if(gameState ==  STATE.Game) {
+			handler.addObject(new Player(WIDTH/2 -32, HEIGHT/2 -32, ID.Player, handler));//initialized at center
+			handler.addObject(new Enemy1(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.Enemy1, handler));
+			handler.addObject(new SmartEnemy(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.SmartEnemy, handler));
+		}
 		//takes the handler and adds an object at that position and that is constructed
 
 		
@@ -104,8 +110,13 @@ public class Game extends Canvas implements Runnable{
 	}
 	private void tick() {
 		handler.tick();
-		hud.tick();
-		spawn.tick();
+		if(gameState == STATE.Game) {
+			hud.tick();
+			spawn.tick();
+		}else if(gameState == STATE.Menu) {
+			menu.tick();
+		}
+		
 		//if(hud.health == 0) {
 		//	stop();
 		//}
@@ -124,7 +135,11 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
-		hud.render(g);
+		if(gameState == STATE.Game) {
+			hud.render(g);
+		}else if(gameState == STATE.Menu) {
+			menu.render(g);
+		}
 		
 		g.dispose();
 		bs.show();
