@@ -113,7 +113,7 @@ public class Game extends Canvas implements Runnable{
 		if(gameState == STATE.Game) {
 			hud.tick();
 			spawn.tick();
-		}else if(gameState == STATE.Menu) {
+		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 			menu.tick();
 		}
 		
@@ -137,7 +137,7 @@ public class Game extends Canvas implements Runnable{
 		
 		if(gameState == STATE.Game) {
 			hud.render(g);
-		}else if(gameState == STATE.Menu) {
+		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 			menu.render(g);
 		}
 		
