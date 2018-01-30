@@ -34,7 +34,8 @@ public class Game extends Canvas implements Runnable{
 	public Game() {
 		handler = new Handler();
 		//should create handler before window
-		menu = new Menu(this, handler);
+		hud = new HUD();
+		menu = new Menu(this, handler, hud);
 		
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
@@ -43,7 +44,7 @@ public class Game extends Canvas implements Runnable{
 		/* synchronized is all about different threads reading and writing
 		*to the same variables, objects and resources
 		*/
-		hud = new HUD();
+		
 		spawn = new Spawn(handler, hud);
 		
 		
@@ -113,13 +114,19 @@ public class Game extends Canvas implements Runnable{
 		if(gameState == STATE.Game) {
 			hud.tick();
 			spawn.tick();
-		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
+		}else if(gameState == STATE.Menu || gameState == STATE.Help || gameState == STATE.End) {
 			menu.tick();
 		}
 		
-		//if(hud.health == 0) {
-		//	stop();
-		//}
+		if(hud.health == 0) {
+			for(int i = 0; i< handler.object.size(); i++) {
+				GameObject tempObject = handler.object.get(i);
+				if(tempObject.getID() == ID.Player) {
+					handler.removeObject(tempObject);
+				}
+			}
+			gameState = STATE.End;
+		}
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -137,7 +144,7 @@ public class Game extends Canvas implements Runnable{
 		
 		if(gameState == STATE.Game) {
 			hud.render(g);
-		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
+		}else if(gameState == STATE.Menu || gameState == STATE.Help || gameState == STATE.End) {
 			menu.render(g);
 		}
 		

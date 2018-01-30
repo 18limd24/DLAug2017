@@ -16,8 +16,10 @@ public class HUD {
 		
 		greenValue = (int)Game.clamp(greenValue, 255, 0);
 		greenValue = (int)health *2;
+		if(health > 0) {
+			score++;
+		}
 		
-		score++;
 		
 	}
 	public void render(Graphics g) {

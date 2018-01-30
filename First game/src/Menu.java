@@ -10,10 +10,12 @@ public class Menu extends MouseAdapter{
 	private Game game;
 	private Handler handler;
 	private Random r = new Random();
+	private HUD hud;
 	
-	public Menu(Game game, Handler handler) {
+	public Menu(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
+		this.hud = hud;
 	}
 	
 	public void mousePressed(MouseEvent e) {
@@ -60,6 +62,8 @@ public class Menu extends MouseAdapter{
 
 	public void render(Graphics g) {
 		Font fnt = new Font("arial", 1, 50);
+		Font fnt2 = new Font("arial", 1, 20);
+
 		if (game.gameState == STATE.Menu) {
 			
 			g.setColor(Color.WHITE);
@@ -83,11 +87,22 @@ public class Menu extends MouseAdapter{
 			g.drawRect(25, 25, 150, 64);
 			g.drawString("BACK", 30, 72);
 			
-			Font fnt2 = new Font("arial", 1, 20);
 			g.setFont(fnt2);
 			g.drawString("To play this game, use WASD to move and avoid enemies.", 15, 200);
 			g.drawString("Collect yellow speedups to be fasterHit escape to quit game", 15, 230);
 			
+		}
+		if(game.gameState == STATE.End) {
+			g.setFont(fnt);
+			g.setColor(Color.cyan);
+			g.drawString("GAME", Game.WIDTH/2 - 80, 100);
+			g.setColor(Color.magenta);
+			g.drawString("OVER", Game.WIDTH/2 - 80, 160);
+			
+			g.setColor(Color.yellow);
+			g.setFont(fnt2);
+			g.drawString("score: " + hud.getScore(), Game.WIDTH/2 - 80, 170);
+			g.drawString("HIGHSCORE", Game.WIDTH/2 - 80, 195);
 		}
 	}
 
