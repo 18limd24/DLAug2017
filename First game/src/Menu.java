@@ -101,8 +101,13 @@ public class Menu extends MouseAdapter{
 			
 			g.setColor(Color.yellow);
 			g.setFont(fnt2);
-			g.drawString("score: " + hud.getScore(), Game.WIDTH/2 - 80, 170);
-			g.drawString("HIGHSCORE", Game.WIDTH/2 - 80, 195);
+			g.drawString("score: " + hud.getScore(), Game.WIDTH/2 - 80, 205);
+			g.drawString("HIGHSCORE:", Game.WIDTH/2 - 80, 185);
+			
+			g.setColor(Color.WHITE);
+			g.drawRect(Game.WIDTH / 2 - 100, 150, 200, 64);
+			g.setFont(fnt);
+			g.drawString("Play again",  (Game.WIDTH / 2 - 100) + 50, 200);
 		}
 	}
 
