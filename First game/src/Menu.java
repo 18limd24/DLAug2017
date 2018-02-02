@@ -39,6 +39,18 @@ public class Menu extends MouseAdapter{
 			if(mouseOver(mx,my,25, 25, 150, 64)) {
 				game.gameState = STATE.Menu;
 			}
+		}else if(game.gameState == STATE.End) {
+			//play again
+			if(mouseOver(mx,my,Game.WIDTH / 2 - 100, 230, 200, 64)){
+				for(int i = 0; i< handler.object.size(); i++) {
+				handler.removeObject(handler.object.get(i));
+				}
+				handler.addObject(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player, handler));
+				handler.addObject(new Enemy1(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.Enemy1, handler));
+				hud.setScore(0);
+				hud.setLevel(0);
+				game.gameState = STATE.Game;
+			}
 		}
 	}
 	public void mouseReleased(MouseEvent e) {
@@ -103,11 +115,14 @@ public class Menu extends MouseAdapter{
 			g.setFont(fnt2);
 			g.drawString("score: " + hud.getScore(), Game.WIDTH/2 - 80, 205);
 			g.drawString("HIGHSCORE:", Game.WIDTH/2 - 80, 185);
-			
+			//play again
 			g.setColor(Color.WHITE);
-			g.drawRect(Game.WIDTH / 2 - 100, 150, 200, 64);
-			g.setFont(fnt);
-			g.drawString("Play again",  (Game.WIDTH / 2 - 100) + 50, 200);
+			g.drawRect(Game.WIDTH / 2 - 100, 230, 200, 64);
+			g.setFont(new Font("arial",1, 40));
+			g.drawString("Play again",  (Game.WIDTH / 2 - 100) + 5, 275);
+			//quit
+			g.drawRect(Game.WIDTH / 2 - 100, 310, 200, 64);
+			g.drawString("Quit", (Game.WIDTH/2 - 100) +15, 355);
 		}
 	}
 

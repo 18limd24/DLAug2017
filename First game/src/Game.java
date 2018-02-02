@@ -29,7 +29,7 @@ public class Game extends Canvas implements Runnable{
 	private Spawn spawn;
 	private Menu menu;
 	
-	public STATE gameState = STATE.Menu;
+	public STATE gameState = STATE.End;
 	
 	public Game() {
 		handler = new Handler();
