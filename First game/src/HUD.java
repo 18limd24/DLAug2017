@@ -47,5 +47,10 @@ public class HUD {
 	public int getLevel() {
 		return level;
 	}
+	public void reset() {
+		health = 100;
+		this.score = 0;
+		this.level = 1;
+	}
 
 }

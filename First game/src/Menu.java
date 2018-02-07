@@ -41,15 +41,15 @@ public class Menu extends MouseAdapter{
 			}
 		}else if(game.gameState == STATE.End) {
 			//play again
-			if(mouseOver(mx,my,Game.WIDTH / 2 - 100, 230, 200, 64)){
-				for(int i = 0; i< handler.object.size(); i++) {
-				handler.removeObject(handler.object.get(i));
-				}
+			if(mouseOver(mx,my,Game.WIDTH / 2 - 100, 230, 200, 64)) {
+				handler.object.clear();
 				handler.addObject(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player, handler));
 				handler.addObject(new Enemy1(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.Enemy1, handler));
-				hud.setScore(0);
-				hud.setLevel(0);
+				hud.reset();
 				game.gameState = STATE.Game;
+			}
+			if(mouseOver(mx, my,Game.WIDTH / 2 - 100, 310, 200, 64)) {
+				
 			}
 		}
 	}

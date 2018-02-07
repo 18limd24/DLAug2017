@@ -61,8 +61,12 @@ public class ThereAndBackAgain
 	// dwarf names. This method will always add a new Hobbit named "Bilbo" and a      
 	// new Wizard named "Gandalf" whose color is "Grey" to the ArrayList.
 	// Then it uses a loop to add all the dwarves from the String array to the party.
-	public static void createParty(ArrayList<Traveler> party, String[] dwarfNames)
-	{	
+	public static void createParty(ArrayList<Traveler> party, String[] dwarfNames){	
+		party.add(new Hobbit("Bilbo"));
+		party.add(new Wizard("Gandalf", "Grey"));
+		for(String dwarf: dwarfNames) {
+			party.add(new Dwarf(dwarf));
+		}
 	
 	}
 	
@@ -76,6 +80,11 @@ public class ThereAndBackAgain
 	//     kili has traveled 100 miles
 	public static String allTravel(ArrayList<Traveler> party, int miles)
 	{
-		return "";
+		String traveled = "";
+		for(Traveler traveler: party) {
+			traveler.travel(miles);
+			traveled += traveler.getName() + "has traveled " + traveler.getDistanceTraveled() + " miles\n";
+		}
+		return traveled;
 	}
 }
