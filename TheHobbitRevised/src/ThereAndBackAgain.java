@@ -36,14 +36,17 @@ public class ThereAndBackAgain
 				               "Oin", "Gloin", "Bifur", "Bofur", "Bombur", "Thorin"};
 
 		// Make a new ArrayList to hold a 2nd party of Travelers called party2:
+		ArrayList<Traveler> party2 = new ArrayList<Traveler>();
 		
 		
 		// Call the createParty method and pass it party2 and the dwarfNames array.
+		createParty(party2, dwarfNames);
+
 		
 		
 		// Finally, call the allTravel method passing it party2 and 100 (representing
 		// the 100 miles that party2 has traveled together.  
-		
+		allTravel(party2,100);
 
 
 		
