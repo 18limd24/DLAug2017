@@ -21,11 +21,11 @@ public class Wizard extends Traveler
 	
 	public void travel(int miles)
 	{
-		
+		super.travel(miles *3);
 	}
 	
 	public String getName()
 	{
-		
+		return super.getName() + " the " + this.color;
 	}
 }
