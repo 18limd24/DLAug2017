@@ -2,7 +2,7 @@
 public enum STATE {
 	Menu,
 	Fight,
-	Pokemon,
+	PokemonChoice,
 	Bag,
 	FightAnimation;
 

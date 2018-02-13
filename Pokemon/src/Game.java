@@ -12,14 +12,18 @@ public class Game extends Canvas implements Runnable{
 	private boolean running = false;
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Handler handler;
+	private Menu menu;
+	public STATE gameState = STATE.Menu;
 	public Game() {
 		handler = new Handler();
 		new Window(WIDTH, HEIGHT, "POKEMON (Showdown)", this);
+		menu = new Menu();
 		handler.addObject(new MyPokemon(ID.Pikachu));
 		handler.addObject(new EnemyPokemon(ID.Squirtle));
 	}
 	public void tick() {
 		handler.tick();
+		if(gameState == STATE.Menu) menu.tick();
 	}
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -33,6 +37,7 @@ public class Game extends Canvas implements Runnable{
 		g.fillRect(0,0,WIDTH,HEIGHT);
 		
 		handler.render(g);
+		if(gameState == STATE.Menu) menu.render(g);
 		
 		g.dispose();
 		bs.show();
