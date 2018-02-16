@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable{
 	public Game() {
 		handler = new Handler();
 		new Window(WIDTH, HEIGHT, "POKEMON (Showdown)", this);
-		menu = new Menu();
+		menu = new Menu(this, handler);
 		handler.addObject(new MyPokemon(ID.Pikachu));
 		handler.addObject(new EnemyPokemon(ID.Squirtle));
 	}

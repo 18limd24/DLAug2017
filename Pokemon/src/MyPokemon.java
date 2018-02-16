@@ -10,6 +10,7 @@ public class MyPokemon extends Pokemon{
 		// TODO Auto-generated constructor stub
 	}
 	public void render(Graphics g) {
+		//just for dimensions right now
 		g.setColor(Color.GREEN);
 		g.fillRect((int)x, (int)y, 128, 128);
 	}
