@@ -13,20 +13,34 @@ public class Menu extends MouseAdapter{
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
-		
-		if(mouseOver(mx, my, 400, 351, 233/2, 99/2)) {//first box(top left)
-			
+		if (game.gameState == STATE.Menu) {
+			if (mouseOver(mx, my, 400, 351, 233 / 2, 99 / 2)) {// first box(top left)
+
+			}
+			if (mouseOver(mx, my, 400 + 233 / 2, 351, 233 / 2, 99 / 2)) {// top right
+
+			}
+			if (mouseOver(mx, my, 400, 351 + 99 / 2, 233 / 2, 99 / 2)) {// bottom left
+
+			}
+			if (mouseOver(mx, my, 400 + 233 / 2, 351 + 99 / 2, 233 / 2, 99 / 2)) {// bottom right
+
+			}
 		}
-		if(mouseOver(mx, my, 400 + 233/2, 351, 233/2, 99/2)) {//top right
-			
+		if (game.gameState == STATE.Fight) {
+			if (mouseOver(mx, my, 400, 351, 233 / 2, 99 / 2)) {// first box(top left)
+
+			}
+			if (mouseOver(mx, my, 400 + 233 / 2, 351, 233 / 2, 99 / 2)) {// top right
+
+			}
+			if (mouseOver(mx, my, 400, 351 + 99 / 2, 233 / 2, 99 / 2)) {// bottom left
+
+			}
+			if (mouseOver(mx, my, 400 + 233 / 2, 351 + 99 / 2, 233 / 2, 99 / 2)) {// bottom right
+
+			}
 		}
-		if(mouseOver(mx, my, 400, 351 + 99/2, 233/2, 99/2)) {//bottom left
-			
-		}
-		if(mouseOver(mx, my, 400 + 233/2, 351 + 99/2, 233/2, 99/2)) {//bottom right
-			
-		}
-		
 	}
 	public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
 		if(mx > x && mx < x + width) {
@@ -47,14 +61,20 @@ public class Menu extends MouseAdapter{
 		g.fillRect(0, 350, 639, 180);//words
 		g.fillRect(400,351,233,99);//whole rect
 		
-		g.setColor(Color.WHITE);
-		g.drawRect(0, 350, 639, 180);
-		g.drawRect(400,351,233,99);
-		
-		//need to divide into 4 rectangles for the choices.
-		g.setColor(Color.blue);//temp, will be black later
-		g.drawRect(400, 351, 233/2, 99/2);
-		g.drawRect(400 + 233/2, 351 + 99/2, 233/2, 99/2);
+		if (game.gameState == STATE.Menu || game.gameState == STATE.Fight) {
+			g.setColor(Color.WHITE);
+			g.drawRect(0, 350, 639, 180);
+			g.drawRect(400, 351, 233, 99);
+
+			// need to divide into 4 rectangles for the choices.
+
+			g.setColor(Color.blue);// temp, will be black later
+			g.drawRect(400, 351, 233 / 2, 99 / 2);// top left
+			g.drawRect(400 + 233 / 2, 351 + 99 / 2, 233 / 2, 99 / 2);// top right
+			if(game.gameState == STATE.Menu) {
+				
+			}
+		}
 	}
 
 }

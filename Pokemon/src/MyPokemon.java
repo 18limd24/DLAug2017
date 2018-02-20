@@ -7,7 +7,6 @@ public class MyPokemon extends Pokemon{
 	private float y = 250;
 	public MyPokemon( ID id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 	public void render(Graphics g) {
 		//just for dimensions right now

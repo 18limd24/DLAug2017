@@ -13,13 +13,16 @@ public class Game extends Canvas implements Runnable{
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Handler handler;
 	private Menu menu;
+	private HUD hud;
 	public STATE gameState = STATE.Menu;
 	public Game() {
 		handler = new Handler();
 		new Window(WIDTH, HEIGHT, "POKEMON (Showdown)", this);
 		menu = new Menu(this, handler);
-		handler.addObject(new MyPokemon(ID.Pikachu));
-		handler.addObject(new EnemyPokemon(ID.Squirtle));
+		MyPokemon pikachu = new MyPokemon(ID.Pikachu);
+		handler.addObject(pikachu);
+		EnemyPokemon squirtle = new EnemyPokemon(ID.Squirtle);
+		handler.addObject(squirtle);
 	}
 	public void tick() {
 		handler.tick();
