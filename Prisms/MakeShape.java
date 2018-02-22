@@ -1,4 +1,7 @@
-
+/*Darren Lim
+ * February 22, 2018
+ * Prism homework
+ */
 public class MakeShape {
 
 	public static void main(String[] args) 
