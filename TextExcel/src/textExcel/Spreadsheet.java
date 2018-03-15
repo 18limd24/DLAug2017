@@ -8,6 +8,20 @@ public class Spreadsheet implements Grid{
 		arrayOfCells = new Cell[20][12];
 	}
 	public String processCommand(String command){
+		if(command.length() == 2 || command.length() == 3) {
+			command = command.toLowerCase();
+			char column = command.charAt(0);
+			int row = Integer.parseInt(command.substring(1));
+			int columnNumber = column - 97;
+			return arrayOfCells[row - 1][columnNumber].fullCellText();
+		}else if(command.toLowerCase().equals("clear")) {
+			new Spreadsheet();
+			return getGridText();
+		}else if(command.contains("=")) {
+			
+			
+			return getGridText();
+		}
 		return "";
 	}
 
@@ -20,7 +34,6 @@ public class Spreadsheet implements Grid{
 	}
 
 	public Cell getCell(Location loc){
-		
 		return arrayOfCells[loc.getRow()][loc.getCol()];
 	}
 
@@ -29,14 +42,16 @@ public class Spreadsheet implements Grid{
 		for(int i = 0; i<getRows(); i++) {
 			char column = 'A';
 			gridText += "|" + column + "        ";
-			column = column + 1;
+			column = (char) (column + 1);
 		}
+		gridText += "\n";
 		for(int i = 0; i < getRows(); i++) {
 			for(int j = 0; j < getCols(); j++) {
-				
+				gridText += "|" + arrayOfCells[i][j].abbreviatedCellText();
 			}
+			gridText += "\n" + (i + 1);
 		}
-		return null;
+		return gridText;
 	}
 
 }
