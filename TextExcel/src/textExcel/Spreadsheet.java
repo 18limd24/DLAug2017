@@ -18,6 +18,11 @@ public class Spreadsheet implements Grid{
 			new Spreadsheet();
 			return getGridText();
 		}else if(command.contains("=")) {
+			String[] splitCommand = command.split(command);
+			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+			arrayOfCells[cell.getRow()][cell.getCol()] = new TextCell(command.substring(command.indexOf("=") + 1));			
+			return getGridText();
+		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
 			
 			
 			return getGridText();

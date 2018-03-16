@@ -3,6 +3,10 @@ package textExcel;
 public class TextCell implements Cell {
 	
 	private String text;
+	
+	public TextCell(String text) {
+		this.text = text;
+	}
 
 	public String abbreviatedCellText() {
 		if(text.length() < 10) {
