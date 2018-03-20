@@ -12,9 +12,9 @@ public class TextExcel{
 	    System.out.println("Welcome to TextExcel, the cheaper WordExcel!");
 	    System.out.println("To use, enter a command, or type \"quit\" to exit");
 	    Spreadsheet spreadsheet = new Spreadsheet();
-	    TestsALL.Helper th = new TestsALL.Helper();
-	    System.out.println(th.getText());
-	    System.out.println(spreadsheet.getGridText());
+	    //TestsALL.Helper th = new TestsALL.Helper();
+	    //System.out.println(th.getText());
+	    //System.out.println(spreadsheet.getGridText());
 	    String next = console.nextLine();
 
 	    while(!next.equalsIgnoreCase("quit")) {
