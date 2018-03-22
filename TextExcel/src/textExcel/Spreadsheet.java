@@ -78,6 +78,7 @@ public class Spreadsheet implements Grid{
 			}
 			
 		}
+		gridText += "\n";
 		return gridText;
 		
 	}
