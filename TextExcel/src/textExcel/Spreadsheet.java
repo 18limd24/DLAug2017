@@ -21,27 +21,15 @@ public class Spreadsheet implements Grid{
 			int columnNumber = column - 97;
 			return arrayOfCells[row - 1][columnNumber].fullCellText();
 		}else if(command.toLowerCase().equals("clear")) {
-			//clear
-			arrayOfCells = new Cell[20][12];
-			for(int i = 0; i < getRows(); i++) {
-				for(int j = 0; j < getCols(); j++) {
-					arrayOfCells[i][j] = new EmptyCell();
-				}
-			}
+			clear();
 			return getGridText();
 		}else if(command.contains("=")) {
 			//set with =
-			String[] splitCommand = command.split(" ");
-			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
-			int row = cell.getRow();
-			int col = cell.getCol();
-			arrayOfCells[row][col] = new TextCell(command.substring(command.indexOf("\"") + 1, command.length() - 1));			
+			set(command);
 			return getGridText();
 		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
 			//clear A1
-			String[] splitCommand = command.split(" ");
-			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[1]);
-			arrayOfCells[cell.getRow()][cell.getCol()] = new EmptyCell();
+			clearCell(command);
 			return getGridText();
 		}
 		return "";
@@ -81,6 +69,26 @@ public class Spreadsheet implements Grid{
 		gridText += "\n";
 		return gridText;
 		
+	}
+	public void clear() {
+		arrayOfCells = new Cell[20][12];
+		for(int i = 0; i < getRows(); i++) {
+			for(int j = 0; j < getCols(); j++) {
+				arrayOfCells[i][j] = new EmptyCell();
+			}
+		}
+	}
+	public void set(String command) {
+		String[] splitCommand = command.split(" ");
+		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+		int row = cell.getRow();
+		int col = cell.getCol();
+		arrayOfCells[row][col] = new TextCell(command.substring(command.indexOf("\"") + 1, command.length() - 1));			
+	}
+	public void clearCell(String command) {
+		String[] splitCommand = command.split(" ");
+		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[1]);
+		arrayOfCells[cell.getRow()][cell.getCol()] = new EmptyCell();
 	}
 
 }
