@@ -4,7 +4,7 @@ public class ValueCell extends RealCell{
 	
 	private double value;
 	
-	public ValueCell(double value) {
+	public ValueCell(double value) {//should I make it accept double or a string command
 		this.value = value;
 	}
 	
@@ -27,7 +27,11 @@ public class ValueCell extends RealCell{
 
 	public String fullCellText() {
 		String answer = "" + value;
-		return value;
+		return answer;
+	}
+
+	public double getDoubleValue() {
+		return this.value;
 	}
 
 }

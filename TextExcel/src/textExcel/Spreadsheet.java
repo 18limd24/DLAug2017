@@ -25,11 +25,15 @@ public class Spreadsheet implements Grid{
 			return getGridText();
 		}else if(command.contains("=")) {
 			//set with =
-			set(command);
+			setText(command);
 			return getGridText();
 		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
 			//clear A1
 			clearCell(command);
+			return getGridText();
+		}else if(command.toLowerCase().contains("%")) {
+			//set percent
+			
 			return getGridText();
 		}
 		return "";
@@ -78,12 +82,17 @@ public class Spreadsheet implements Grid{
 			}
 		}
 	}
-	public void set(String command) {
+	public void setText(String command) {
 		String[] splitCommand = command.split(" ");
 		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
 		int row = cell.getRow();
 		int col = cell.getCol();
 		arrayOfCells[row][col] = new TextCell(command.substring(command.indexOf("\"") + 1, command.length() - 1));			
+	}
+	public void setPercent(String command) {
+		String[] splitCommand = command.split(" ");
+		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+		arrayOfCells[cell.getRow()][cell.getCol()] = new PercentCell(command);
 	}
 	public void clearCell(String command) {
 		String[] splitCommand = command.split(" ");
