@@ -25,7 +25,15 @@ public class Spreadsheet implements Grid{
 			return getGridText();
 		}else if(command.contains("=")) {
 			//set with =
-			setText(command);
+			if(command.contains("\"")) {
+				setText(command);
+			}else if(command.contains("%")) {
+				setPercent(command);
+			}else if(command.contains("(")) {
+				setFormula(command);
+			}else {
+				setValue(command);
+			}
 			return getGridText();
 		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
 			//clear A1
@@ -98,6 +106,16 @@ public class Spreadsheet implements Grid{
 		String[] splitCommand = command.split(" ");
 		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[1]);
 		arrayOfCells[cell.getRow()][cell.getCol()] = new EmptyCell();
+	}
+	public void setFormula(String command) {
+		String[] splitCommand = command.split(" ");
+		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+		arrayOfCells[cell.getRow()][cell.getCol()] = new FormulaCell(command);
+	}
+	public void setValue(String command) {
+		String[] splitCommand = command.split(" ");
+		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+		arrayOfCells[cell.getRow()][cell.getCol()] = new ValueCell(command);
 	}
 
 }

@@ -6,7 +6,9 @@ public class PercentCell extends RealCell{
 	
 	public PercentCell(String command) {
 		super(command);
-		percent = Double.parseDouble(command.toLowerCase().substring(beginIndex, command.indexOf('%')));
+		percent = Double.parseDouble(command.toLowerCase().substring(command.indexOf('=') + 1, command.indexOf('%')));
+		//does that work?
+		percent *= 0.01;
 	}
 
 	public String abbreviatedCellText() {

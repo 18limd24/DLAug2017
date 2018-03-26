@@ -4,8 +4,9 @@ public class FormulaCell extends RealCell{
 	
 	private String formula;
 	
-	public FormulaCell() {
-		
+	public FormulaCell(String command) {
+		super(command);
+		this.formula = command.substring(command.indexOf("(")).toUpperCase();
 	}
 
 	public String abbreviatedCellText() {

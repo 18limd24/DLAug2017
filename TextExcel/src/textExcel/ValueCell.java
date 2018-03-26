@@ -4,13 +4,15 @@ public class ValueCell extends RealCell{
 	
 	private double value;
 	
-	public ValueCell(double value) {//should I make it accept double or a string command
-		this.value = value;
+	public ValueCell(String command) {//should I make it accept double or a string command
+		super(command);
+		this.value = Double.parseDouble(command.substring(command.indexOf("=") + 1));
 	}
 	
-	public ValueCell(int value) {
+	/*public ValueCell(String command) {
+		super(command);
 		this.value = (double) value;
-	}
+	}*/
 	
 	public String abbreviatedCellText() {
 		String answer = ""+ value;
@@ -26,7 +28,12 @@ public class ValueCell extends RealCell{
 	}
 
 	public String fullCellText() {
-		String answer = "" + value;
+		String answer = "";
+		//if(getDoubleValue() % 1 == 0.0) {
+		//	answer += (int)getDoubleValue();
+		//}else {
+			answer += getDoubleValue();
+		//}
 		return answer;
 	}
 
