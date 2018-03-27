@@ -13,4 +13,8 @@ public abstract class RealCell implements Cell{
 	public abstract String fullCellText();
 
 	public abstract double getDoubleValue();
+	
+	public String getCommand() {
+		return this.command;
+	}
 }

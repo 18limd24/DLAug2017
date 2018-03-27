@@ -4,9 +4,11 @@ public class ValueCell extends RealCell{
 	
 	private double value;
 	
+	
 	public ValueCell(String command) {//should I make it accept double or a string command
-		super(command);
+		super(command.substring(command.indexOf("=") + 2));
 		this.value = Double.parseDouble(command.substring(command.indexOf("=") + 1));
+		
 	}
 	
 	/*public ValueCell(String command) {
@@ -29,16 +31,13 @@ public class ValueCell extends RealCell{
 
 	public String fullCellText() {
 		String answer = "";
-		//if(getDoubleValue() % 1 == 0.0) {
-		//	answer += (int)getDoubleValue();
-		//}else {
-			answer += getDoubleValue();
-		//}
+		answer += getCommand();
 		return answer;
 	}
 
 	public double getDoubleValue() {
 		return this.value;
 	}
+	
 
 }

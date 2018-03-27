@@ -12,7 +12,9 @@ public class PercentCell extends RealCell{
 	}
 
 	public String abbreviatedCellText() {
-		String answer = ""+ percent;
+		int intPercent = truncate();
+		String answer = ""+ intPercent + "%";
+		
 		if(answer.length() > 10) {
 			return answer.substring(0, 10);
 		}else {
@@ -32,6 +34,12 @@ public class PercentCell extends RealCell{
 	public double getDoubleValue() {
 		
 		return percent;
+	}
+	public int truncate() {
+		String command = getCommand();
+		double commandPercent = Double.parseDouble(command.toLowerCase().substring(command.indexOf('=') + 1, command.indexOf('%')));
+		return (int)(commandPercent);
+		
 	}
 
 }

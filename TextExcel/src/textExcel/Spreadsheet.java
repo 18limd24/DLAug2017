@@ -83,7 +83,6 @@ public class Spreadsheet implements Grid{
 		
 	}
 	public void clear() {
-		arrayOfCells = new Cell[20][12];
 		for(int i = 0; i < getRows(); i++) {
 			for(int j = 0; j < getCols(); j++) {
 				arrayOfCells[i][j] = new EmptyCell();
