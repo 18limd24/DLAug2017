@@ -36,8 +36,7 @@ public class FormulaCell extends RealCell{
 
 	public String fullCellText() {
 		
-		//return "(" + formula + ")";
-		return "" + getDoubleValue();
+		return "(" + formula + ")";
 	}
 
 	public double getDoubleValue() {
@@ -45,9 +44,16 @@ public class FormulaCell extends RealCell{
 		
 		String[] splitFormula = formula.split(" ");
 		//every odd number of splitformula will be an operator
-		double result = Double.parseDouble(splitFormula[0]); 
-		for(int i = 0; i < splitFormula.length; i+= 2) {//will go through even numbers
-			if (splitFormula.length > i + 1) {
+		//should ignore first index because it is a parentheses
+		//should getDoubleValue of all first
+		for(int i = 0; i < splitFormula.length; i++) {
+			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && splitFormula[i].) {
+				
+			}
+		}
+		double result = Double.parseDouble(splitFormula[1]);
+		for(int i = 1; i + 2 < splitFormula.length; i+= 2) {//will go through odd indexes
+			
 				if (splitFormula[i + 1].equals("+")) {
 					result += Double.parseDouble(splitFormula[i + 2]);
 				} else if (splitFormula[i + 1].equals("-")) {
@@ -57,7 +63,7 @@ public class FormulaCell extends RealCell{
 				} else if (splitFormula[i + 1].equals("/")) {
 					result /= Double.parseDouble(splitFormula[i + 2]);
 				}
-			}
+			
 		}
 		return result;
 	}
