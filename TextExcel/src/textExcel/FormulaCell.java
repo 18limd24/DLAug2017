@@ -47,7 +47,7 @@ public class FormulaCell extends RealCell{
 		//should ignore first index because it is a parentheses
 		//should getDoubleValue of all first
 		for(int i = 0; i < splitFormula.length; i++) {
-			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && splitFormula[i].) {
+			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && splitFormula[i].matches('A' - 'Z')) {
 				
 			}
 		}
