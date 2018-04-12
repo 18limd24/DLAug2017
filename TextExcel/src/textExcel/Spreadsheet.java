@@ -109,7 +109,7 @@ public class Spreadsheet implements Grid{
 	public void setFormula(String command) {
 		String[] splitCommand = command.split(" ");
 		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
-		arrayOfCells[cell.getRow()][cell.getCol()] = new FormulaCell(command);
+		arrayOfCells[cell.getRow()][cell.getCol()] = new FormulaCell(command, this);
 	}
 	public void setValue(String command) {
 		String[] splitCommand = command.split(" ");

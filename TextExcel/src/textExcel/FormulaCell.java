@@ -3,11 +3,13 @@ package textExcel;
 public class FormulaCell extends RealCell{
 	
 	private String formula;
+	private Spreadsheet spreadsheet;
 	
-	public FormulaCell(String command) {
+	public FormulaCell(String command, Spreadsheet spreadsheet) {
 		super(command);
 		this.formula = command.substring(command.indexOf("(") + 1, command.indexOf(")")).toUpperCase();
 		//I want the field to exclude the parentheses
+		this.spreadsheet = spreadsheet;
 	}
 
 	public String abbreviatedCellText() {
@@ -47,8 +49,13 @@ public class FormulaCell extends RealCell{
 		//should ignore first index because it is a parentheses
 		//should getDoubleValue of all first
 		for(int i = 0; i < splitFormula.length; i++) {
-			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && splitFormula[i].matches('A' - 'Z')) {
-				
+			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && (splitFormula[i].toUpperCase().charAt(0) >= 65 || 
+					splitFormula[i].toUpperCase().charAt(0) <= 90)) {
+				//recognizes if first index is gonna be a letter
+				SpreadsheetLocation loc = new SpreadsheetLocation(splitFormula[i]);
+				RealCell cell = (RealCell)spreadsheet.getCell(loc);
+				//now we have the cell
+				splitFormula[i] = "" + cell.getDoubleValue();
 			}
 		}
 		double result = Double.parseDouble(splitFormula[1]);
