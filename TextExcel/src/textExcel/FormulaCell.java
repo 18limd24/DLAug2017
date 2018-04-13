@@ -48,6 +48,11 @@ public class FormulaCell extends RealCell{
 		//every odd number of splitformula will be an operator
 		//should ignore first index because it is a parentheses
 		//should getDoubleValue of all first
+		if(splitFormula[1].contains("SUM")) {
+			return sum(splitFormula);
+		}else if(splitFormula[1].contains("AVG")) {
+			return average(splitFormula);
+		}
 		for(int i = 0; i < splitFormula.length; i++) {
 			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && (splitFormula[i].toUpperCase().charAt(0) >= 65 || 
 					splitFormula[i].toUpperCase().charAt(0) <= 90)) {
@@ -73,6 +78,14 @@ public class FormulaCell extends RealCell{
 			
 		}
 		return result;
+	}
+	public double average(String[] splitFormula) {
+		
+		return 0.0;
+	}
+	public double sum(String[] splitFormula) {
+		
+		return 0.0;
 	}
 
 }
