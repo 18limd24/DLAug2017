@@ -58,6 +58,7 @@ public class Spreadsheet implements Grid{
 	public Cell getCell(Location loc){
 		return arrayOfCells[loc.getRow()][loc.getCol()];
 	}
+	
 
 	public String getGridText(){//use abbbreviatedCellText method
 		String gridText = "   ";

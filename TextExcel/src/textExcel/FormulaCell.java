@@ -90,10 +90,14 @@ public class FormulaCell extends RealCell{
 		
 		double answer = 0.0;
 		for(int i = startingRow; i < endRow; i ++) {
-			for(int i = startingColumn; i < endColumn; i ++) {
-			
+			for(int j = startingColumn; j < endColumn; j ++) {
+				//Cell cell = spreadsheet.getCell(loc);
+				//so this for loop would get a cell and then get double value and add to average
+				//how would I send in a loc
+				
+			}
 		}
-		return 0.0;
+		return answer;
 	}
 	public double sum(String[] splitFormula) {
 		
