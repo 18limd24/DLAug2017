@@ -85,7 +85,7 @@ public class FormulaCell extends RealCell{
 		int startingRow = firstCellLocation.getRow();
 		int startingColumn = firstCellLocation.getCol();
 		
-		int endRow =secondCellLocation.getRow();
+		int endRow = secondCellLocation.getRow();
 		int endColumn = secondCellLocation.getCol();
 		
 		double answer = 0.0;

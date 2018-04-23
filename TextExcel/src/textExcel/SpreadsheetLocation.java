@@ -18,5 +18,8 @@ public class SpreadsheetLocation implements Location{
         row = Integer.parseInt(cellName.substring(1)) -1;
         column = cellName.toLowerCase().charAt(0) - 97;
     }
+    //public SpreadsheetLocation() {
+    	
+    //}
 
 }
