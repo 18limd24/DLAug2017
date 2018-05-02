@@ -13,17 +13,7 @@ public class FormulaCell extends RealCell{
 	}
 
 	public String abbreviatedCellText() {
-		/*formula = "(" + formula + ")";
-		if(formula.length() > 10) {
-			return formula.substring(0, 10) ;
-		}else {
-			int numberOfSpaces = (10 - formula.length());
-			for(int i = 0; i < numberOfSpaces; i++) {
-				formula += " ";
-			}
-			return formula;
-		}
-		*/
+		
 		String answer = "" + getDoubleValue();
 		if(answer.length() > 10) {
 			return answer.substring(0, 10) ;
@@ -57,10 +47,8 @@ public class FormulaCell extends RealCell{
 			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && (splitFormula[i].toUpperCase().charAt(0) >= 65 || 
 					splitFormula[i].toUpperCase().charAt(0) <= 90)) {
 				//recognizes if first index is gonna be a letter
-				SpreadsheetLocation loc = new SpreadsheetLocation(splitFormula[i]);
-				RealCell cell = (RealCell)spreadsheet.getCell(loc);
 				//now we have the cell
-				splitFormula[i] = "" + cell.getDoubleValue();
+				splitFormula[i] = "" + stringToDouble(splitFormula[i]);
 			}
 		}
 		double result = Double.parseDouble(splitFormula[1]);
@@ -101,9 +89,25 @@ public class FormulaCell extends RealCell{
 		splitFormula[2].substring(0, splitFormula[2].indexOf("-"));
 		return answer;
 	}
+	
+	//sends in split formula
+	//first a parentheses and then SUM or AVG 
+	//then something like c1-a4
 	public double sum(String[] splitFormula) {
-		
+		double answer = 0.0;
+		splitFormula[2].substring(0, splitFormula[2].indexOf("-"));
 		return 0.0;
+	}
+	public double stringToDouble(String command) {
+		double result;
+		if(Character.isDigit(command.charAt(0)) || command.charAt(0) == '-') {
+			//if command is a number, like "47"
+			result = Double.parseDouble(command);
+		}else {
+			//if command is a cell
+			result = ((RealCell)spreadsheet.getCell(new SpreadsheetLocation(command))).getDoubleValue();
+		}
+		return result;
 	}
 
 }

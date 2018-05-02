@@ -25,19 +25,25 @@ public class Spreadsheet implements Grid{
 			return getGridText();
 		}else if(command.contains("=")) {
 			//set with =
+			String[] splitCommand = command.split(" ");
+			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+			
 			if(command.contains("\"")) {
-				setText(command);
+				setText(command,cell);
 			}else if(command.contains("%")) {
-				setPercent(command);
+				setPercent(command,cell);
 			}else if(command.contains("(")) {
-				setFormula(command);
+				setFormula(command,cell);
 			}else {
-				setValue(command);
+				setValue(command,cell);
 			}
 			return getGridText();
 		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
 			//clear A1
-			clearCell(command);
+			String[] splitCommand = command.split(" ");
+			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+			
+			clearCell(cell);
 			return getGridText();
 		}else if(command.toLowerCase().contains("%")) {
 			//set percent
@@ -93,31 +99,19 @@ public class Spreadsheet implements Grid{
 			}
 		}
 	}
-	public void setText(String command) {
-		String[] splitCommand = command.split(" ");
-		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
-		int row = cell.getRow();
-		int col = cell.getCol();
-		arrayOfCells[row][col] = new TextCell(command.substring(command.indexOf("\"") + 1, command.length() - 1));			
+	public void setText(String command, SpreadsheetLocation cell) {
+		arrayOfCells[cell.getRow()][cell.getCol()] = new TextCell(command.substring(command.indexOf("\"") + 1, command.length() - 1));			
 	}
-	public void setPercent(String command) {
-		String[] splitCommand = command.split(" ");
-		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+	public void setPercent(String command, SpreadsheetLocation cell) {
 		arrayOfCells[cell.getRow()][cell.getCol()] = new PercentCell(command);
 	}
-	public void clearCell(String command) {
-		String[] splitCommand = command.split(" ");
-		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[1]);
+	public void clearCell(SpreadsheetLocation cell) {
 		arrayOfCells[cell.getRow()][cell.getCol()] = new EmptyCell();
 	}
-	public void setFormula(String command) {
-		String[] splitCommand = command.split(" ");
-		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+	public void setFormula(String command, SpreadsheetLocation cell) {
 		arrayOfCells[cell.getRow()][cell.getCol()] = new FormulaCell(command, this);
 	}
-	public void setValue(String command) {
-		String[] splitCommand = command.split(" ");
-		SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
+	public void setValue(String command, SpreadsheetLocation cell) {
 		arrayOfCells[cell.getRow()][cell.getCol()] = new ValueCell(command);
 	}
 
