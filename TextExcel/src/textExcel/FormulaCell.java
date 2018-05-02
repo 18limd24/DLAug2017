@@ -80,7 +80,7 @@ public class FormulaCell extends RealCell{
 		return result;
 	}
 	public double average(String[] splitFormula) {
-		SpreadsheetLocation firstCellLocation = new SpreadsheetLocation(splitFormula[2].substring(0, splitFormula[2].indexOf("-")));
+		/*SpreadsheetLocation firstCellLocation = new SpreadsheetLocation(splitFormula[2].substring(0, splitFormula[2].indexOf("-")));
 		SpreadsheetLocation secondCellLocation = new SpreadsheetLocation(splitFormula[2].substring(splitFormula[2].indexOf("-"), splitFormula[2].indexOf(" ")));
 		int startingRow = firstCellLocation.getRow();
 		int startingColumn = firstCellLocation.getCol();
@@ -96,7 +96,9 @@ public class FormulaCell extends RealCell{
 				//how would I send in a loc
 				
 			}
-		}
+		}*/
+		double answer = 0.0;
+		splitFormula[2].substring(0, splitFormula[2].indexOf("-"));
 		return answer;
 	}
 	public double sum(String[] splitFormula) {
