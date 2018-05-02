@@ -1,5 +1,7 @@
 package textExcel;
 
+import java.util.ArrayList;
+
 public class FormulaCell extends RealCell{
 	
 	private String formula;
@@ -31,17 +33,15 @@ public class FormulaCell extends RealCell{
 		return "(" + formula + ")";
 	}
 
-	public double getDoubleValue() {
-		//calculateFormula();
-		
+	public double getDoubleValue() {		
 		String[] splitFormula = formula.split(" ");
 		//every odd number of splitformula will be an operator
 		//should ignore first index because it is a parentheses
 		//should getDoubleValue of all first
-		if(splitFormula[1].contains("SUM")) {
+		if(splitFormula[1].toUpperCase().contains("SUM")) {
 			return sum(splitFormula);
-		}else if(splitFormula[1].contains("AVG")) {
-			return average(splitFormula);
+		}else if(splitFormula[1].toUpperCase().contains("AVG")) {
+			return (sum(splitFormula)) / spreadsheet.getCells(splitFormula[2]).size();
 		}
 		for(int i = 0; i < splitFormula.length; i++) {
 			if((splitFormula[i].length() == 2 || splitFormula[i].length() == 3) && (splitFormula[i].toUpperCase().charAt(0) >= 65 || 
@@ -67,36 +67,18 @@ public class FormulaCell extends RealCell{
 		}
 		return result;
 	}
-	public double average(String[] splitFormula) {
-		/*SpreadsheetLocation firstCellLocation = new SpreadsheetLocation(splitFormula[2].substring(0, splitFormula[2].indexOf("-")));
-		SpreadsheetLocation secondCellLocation = new SpreadsheetLocation(splitFormula[2].substring(splitFormula[2].indexOf("-"), splitFormula[2].indexOf(" ")));
-		int startingRow = firstCellLocation.getRow();
-		int startingColumn = firstCellLocation.getCol();
-		
-		int endRow = secondCellLocation.getRow();
-		int endColumn = secondCellLocation.getCol();
-		
-		double answer = 0.0;
-		for(int i = startingRow; i < endRow; i ++) {
-			for(int j = startingColumn; j < endColumn; j ++) {
-				//Cell cell = spreadsheet.getCell(loc);
-				//so this for loop would get a cell and then get double value and add to average
-				//how would I send in a loc
-				
-			}
-		}*/
-		double answer = 0.0;
-		splitFormula[2].substring(0, splitFormula[2].indexOf("-"));
-		return answer;
-	}
-	
 	//sends in split formula
 	//first a parentheses and then SUM or AVG 
 	//then something like c1-a4
 	public double sum(String[] splitFormula) {
 		double answer = 0.0;
-		splitFormula[2].substring(0, splitFormula[2].indexOf("-"));
-		return 0.0;
+		String cellRange = splitFormula[2];
+		ArrayList<Cell> allCells = spreadsheet.getCells(cellRange);
+		for(Cell c: allCells) {
+			RealCell cell = (RealCell) (c);
+			answer += cell.getDoubleValue();
+		}
+		return answer;
 	}
 	public double stringToDouble(String command) {
 		double result;

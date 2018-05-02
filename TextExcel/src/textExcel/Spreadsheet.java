@@ -1,5 +1,6 @@
 package textExcel;
 
+import java.util.ArrayList;
 
 public class Spreadsheet implements Grid{
 	private Cell[][] arrayOfCells;
@@ -13,9 +14,9 @@ public class Spreadsheet implements Grid{
 		}
 	}
 	public String processCommand(String command){
+		command = command.toLowerCase();
 		if(command.length() == 2 || command.length() == 3) {
 			//show cell
-			command = command.toLowerCase();
 			char column = command.charAt(0);
 			int row = Integer.parseInt(command.substring(1));
 			int columnNumber = column - 97;
@@ -113,6 +114,27 @@ public class Spreadsheet implements Grid{
 	}
 	public void setValue(String command, SpreadsheetLocation cell) {
 		arrayOfCells[cell.getRow()][cell.getCol()] = new ValueCell(command);
+	}
+	public ArrayList<Cell> getCells(String cellRange){
+		//cell range will be like c1-d5
+		ArrayList<Cell> allCells = new ArrayList<Cell>();
+		SpreadsheetLocation firstCellLocation = new SpreadsheetLocation(cellRange.substring(0, cellRange.indexOf("-")));
+		SpreadsheetLocation secondCellLocation = new SpreadsheetLocation(cellRange.substring(cellRange.indexOf("-") + 1, cellRange.length()));
+		
+		
+		int startingRow = firstCellLocation.getRow();
+		int startingColumn = firstCellLocation.getCol();
+		
+		int endRow = secondCellLocation.getRow();
+		int endColumn = secondCellLocation.getCol();
+		
+		for(int i = startingRow; i < endRow; i ++) {
+			for(int j = startingColumn; j < endColumn; j ++) {
+				Cell cell = (RealCell)(getCell(i,j));
+				allCells.add(cell);
+			}
+		}
+		return allCells;
 	}
 
 }
