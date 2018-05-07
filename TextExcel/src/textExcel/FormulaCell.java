@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class FormulaCell extends RealCell{
 	
 	private String formula;
+	private String originalFormula;
 	private Spreadsheet spreadsheet;
 	
 	public FormulaCell(String command, Spreadsheet spreadsheet) {
 		super(command);
+		this.originalFormula = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
 		this.formula = command.substring(command.indexOf("(") + 1, command.indexOf(")")).toUpperCase();
 		//I want the field to exclude the parentheses
 		this.spreadsheet = spreadsheet;
@@ -30,7 +32,7 @@ public class FormulaCell extends RealCell{
 
 	public String fullCellText() {
 		
-		return "(" + formula + ")";
+		return "(" + originalFormula + ")";
 	}
 
 	public double getDoubleValue() {		
@@ -75,8 +77,12 @@ public class FormulaCell extends RealCell{
 		String cellRange = splitFormula[2];
 		ArrayList<Cell> allCells = spreadsheet.getCells(cellRange);
 		for(Cell c: allCells) {
-			RealCell cell = (RealCell) (c);
-			answer += cell.getDoubleValue();
+			if(c instanceof RealCell) {
+				RealCell cell = (RealCell) (c);
+				answer += cell.getDoubleValue();
+			}
+			
+			
 		}
 		return answer;
 	}

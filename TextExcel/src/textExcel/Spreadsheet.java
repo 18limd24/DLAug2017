@@ -14,14 +14,15 @@ public class Spreadsheet implements Grid{
 		}
 	}
 	public String processCommand(String command){
-		command = command.toLowerCase();
+		String originalCommand = command;
+		command = command.toUpperCase();
 		if(command.length() == 2 || command.length() == 3) {
 			//show cell
 			char column = command.charAt(0);
 			int row = Integer.parseInt(command.substring(1));
-			int columnNumber = column - 97;
+			int columnNumber = column - 65;
 			return arrayOfCells[row - 1][columnNumber].fullCellText();
-		}else if(command.toLowerCase().equals("clear")) {
+		}else if(command.toUpperCase().equals("CLEAR")) {
 			clear();
 			return getGridText();
 		}else if(command.contains("=")) {
@@ -34,19 +35,19 @@ public class Spreadsheet implements Grid{
 			}else if(command.contains("%")) {
 				setPercent(command,cell);
 			}else if(command.contains("(")) {
-				setFormula(command,cell);
+				setFormula(originalCommand,cell);
 			}else {
 				setValue(command,cell);
 			}
 			return getGridText();
-		}else if(command.toLowerCase().contains("clear") && command.length() > 5) {
+		}else if(command.toUpperCase().contains("CLEAR") && command.length() > 5) {
 			//clear A1
 			String[] splitCommand = command.split(" ");
 			SpreadsheetLocation cell = new SpreadsheetLocation(splitCommand[0]);
 			
 			clearCell(cell);
 			return getGridText();
-		}else if(command.toLowerCase().contains("%")) {
+		}else if(command.toUpperCase().contains("%")) {
 			//set percent
 			
 			return getGridText();
@@ -128,9 +129,9 @@ public class Spreadsheet implements Grid{
 		int endRow = secondCellLocation.getRow();
 		int endColumn = secondCellLocation.getCol();
 		
-		for(int i = startingRow; i < endRow; i ++) {
-			for(int j = startingColumn; j < endColumn; j ++) {
-				Cell cell = (RealCell)(getCell(i,j));
+		for(int i = startingRow; i <= endRow; i ++) {
+			for(int j = startingColumn; j <= endColumn; j ++) {
+				Cell cell = (getCell(i,j));
 				allCells.add(cell);
 			}
 		}
