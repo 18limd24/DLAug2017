@@ -1,3 +1,9 @@
+/*Darren Lim
+ * May 7, 2018
+ * this is a cell -> real cell -> formula cell
+ * 
+ */
+
 package textExcel;
 
 import java.util.ArrayList;
@@ -15,7 +21,7 @@ public class FormulaCell extends RealCell{
 		//I want the field to exclude the parentheses
 		this.spreadsheet = spreadsheet;
 	}
-
+	//abbreviated cell text will return the double value calculated
 	public String abbreviatedCellText() {
 		
 		String answer = "" + getDoubleValue();
@@ -29,7 +35,7 @@ public class FormulaCell extends RealCell{
 			return answer;
 		}
 	}
-
+	//full cell text reveals the entered formula (with the same cases)
 	public String fullCellText() {
 		
 		return "(" + originalFormula + ")";

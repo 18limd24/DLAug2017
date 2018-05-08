@@ -1,3 +1,8 @@
+/*Darren Lim
+ * May 7 2018
+ * a cell that stores text
+ * must take command between parentheses
+ */
 package textExcel;
 
 public class TextCell implements Cell {
@@ -22,7 +27,7 @@ public class TextCell implements Cell {
 			return text.substring(0, 10);
 		}
 	}
-
+	//only shows parentheses here
 	public String fullCellText() {
 		
 		return "\"" + text + "\"";
